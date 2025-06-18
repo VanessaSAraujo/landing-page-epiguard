@@ -27,7 +27,7 @@ export const BenefitsSection = () => {
 
   return (
     <section id="beneficios" className="w-full max-w-[1242px] mx-auto py-16">
-      <h2 className="text-[55px] font-bold font-['Poppins',Helvetica] text-center mb-16 leading-[80px]">
+      <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold font-['Poppins',Helvetica] text-center mb-16 leading-[80px]">
         Quais Os Benefícios De Usar A Epiguard?
       </h2>
 
@@ -41,7 +41,7 @@ export const BenefitsSection = () => {
                 src={benefit.icon}
               />
             </div>
-            <p className="ml-[41px] font-['Poppins',Helvetica] font-normal text-2xl leading-10">
+            <p className="ml-[41px] font-['Poppins',Helvetica] font-normal text-lg md:text-lg lg:text-xl leading-10">
               {benefit.text}
             </p>
           </div>

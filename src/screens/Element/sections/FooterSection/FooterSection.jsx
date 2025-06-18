@@ -4,10 +4,10 @@ import { Button } from "../../../../components/ui/button";
 export const FooterSection = () => {
   // Navigation links data
   const navLinks = [
-    { text: "Início", href: "#" },
-    { text: "Solução", href: "#" },
-    { text: "Benefícios", href: "#" },
-    { text: "Contato", href: "#" },
+    { text: "Início", href: "#inicio" },
+    { text: "Solução", href: "#solucao" },
+    { text: "Benefícios", href: "#beneficios" },
+    { text: "Contato", href: "#contato" },
   ];
 
   // Social media icons data
@@ -80,7 +80,7 @@ export const FooterSection = () => {
         </div>
 
         {/* Navigation Links */}
-        <div className="flex justify-center gap-[100px] absolute top-[270px] left-1/2 -translate-x-1/2 w-full">
+        <div className="hidden custom:flex justify-center gap-[100px] absolute top-[270px] left-1/2 -translate-x-1/2 w-full">
           {navLinks.map((link, index) => (
             <a
               key={index}

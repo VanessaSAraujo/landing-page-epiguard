@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'custom': '1070px',
+      },
       colors: {
         "dark-blue": "var(--dark-blue)",
         "linear-2": "var(--linear-2)",

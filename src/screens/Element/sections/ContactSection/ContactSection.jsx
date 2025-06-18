@@ -16,7 +16,7 @@ export const ContactSection = () => {
   return (
     <section id="contato" className="w-full py-16 bg-linear-2">
       <div className="container mx-auto max-w-5xl px-4">
-        <h2 className="text-5xl font-bold text-center mb-12 [font-family:'Poppins',Helvetica]">
+        <h2 className=" text-3xl md:text-5xl lg:text-6xl font-bold text-center mb-12 [font-family:'Poppins',Helvetica]">
           Solicite Um Plano Personalizado
         </h2>
 
@@ -32,13 +32,13 @@ export const ContactSection = () => {
                     <Input
                       id={field.id}
                       placeholder={field.label}
-                      className="border-none h-[41px] bg-transparent [font-family:'Poppins',Helvetica] font-extralight text-[#052461] text-3xl px-9 placeholder:text-[#052461]"
+                      className="border-none h-[41px] bg-transparent [font-family:'Poppins',Helvetica] font-extralight text-[#052461] text-base md:text-lg lg:text-xl px-9 placeholder:text-[#052461]"
                     />
                   ) : (
                     <Textarea
                       id={field.id}
                       placeholder={field.label}
-                      className="border-none h-[207px] bg-transparent [font-family:'Poppins',Helvetica] font-extralight text-[#052461] text-3xl px-9 py-5 placeholder:text-[#052461] resize-none"
+                      className="border-none h-[207px] bg-transparent [font-family:'Poppins',Helvetica] font-extralight text-[#052461] text-base md:text-lg lg:text-xl px-9 py-5 placeholder:text-[#052461] resize-none"
                     />
                   )}
                 </CardContent>

@@ -9,8 +9,12 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
+body {
+  overflow-x: hidden;
+}
 
 :root {
   --dark-blue: rgb(6, 75, 15);

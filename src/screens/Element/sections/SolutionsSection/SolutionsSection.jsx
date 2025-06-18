@@ -56,13 +56,13 @@ export const SolutionsSection = () => {
   return (
     <section id="solucao" className="w-full py-20">
       <div className="container mx-auto px-4 max-w-7xl">
-        <h2 className="text-[55px] font-bold text-black text-center leading-[80px] font-['Poppins',Helvetica] mb-16">
+        <h2 className=" text-3xl md:text-5xl lg:text-6xl font-bold text-black text-center leading-[80px] font-['Poppins',Helvetica] mb-16">
           Segurança Automatizada Com Inteligência Artificial
         </h2>
 
         <div className="flex flex-col md:flex-row gap-10 items-center">
           <div className="w-full md:w-1/2">
-            <p className="text-2xl font-normal text-black leading-10 font-['Poppins',Helvetica]">
+            <p className="text-lg md:text-lg lg:text-xl font-normal text-black leading-10 font-['Poppins',Helvetica]">
               A EPIGuard é uma plataforma inteligente que detecta em tempo real
               a ausência de EPIs, começando pelo capacete, por meio de câmeras e
               IA.
