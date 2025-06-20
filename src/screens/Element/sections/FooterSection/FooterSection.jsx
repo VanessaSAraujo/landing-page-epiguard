@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "../../../../components/ui/button";
+import { Link } from "react-router-dom";
 
 export const FooterSection = () => {
   // Navigation links data
@@ -91,9 +92,12 @@ export const FooterSection = () => {
             </a>
           ))}
 
-          <Button className="h-[30px] bg-[#03a650] rounded-[20px] px-4 font-['Poppins',Helvetica] font-normal text-[#f2f2f2] text-xl tracking-[2.00px]">
+          <Link
+            to="/login"
+            className="flex items-center justify-center h-[30px] bg-[#03a650] rounded-[20px] px-4 font-['Poppins',Helvetica] font-normal text-[#f2f2f2] text-xl tracking-[2.00px] hover:bg-[#028c3a] transition-colors"
+          >
             Acesso à Plataforma
-          </Button>
+          </Link>
         </div>
 
         {/* Copyright Section */}
