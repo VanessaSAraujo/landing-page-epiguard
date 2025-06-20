@@ -1,0 +1,1 @@
+export { default as PasswordResetSuccess } from "./PasswordResetSuccess.jsx"; 
