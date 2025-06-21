@@ -7,6 +7,7 @@ import {
   NavigationMenuList,
 } from "../../../../components/ui/navigation-menu";
 import { Menu } from "lucide-react"; 
+import logo from '../../../../assets/logo.png';
 
 export const NavigationSection = () => {
   const [activeItem, setActiveItem] = useState("Início");
@@ -46,7 +47,7 @@ export const NavigationSection = () => {
         <img
           className="h-[95px] sm:h-[105px]"
           alt="EPIGuard Logo"
-          src="https://c.animaapp.com/mbx4o6k4UxAFO0/img/design-studio-logo-1.png"
+          src={logo}
         />
 
         {/* Menu Desktop */}

@@ -43,6 +43,35 @@
       "routes": [
         "/password-reset-success"
       ]
+    },
+    {
+      "id": "src/screens/Dashboard/Admin/AdminDashboard.jsx",
+      "label": "AdminDashboard",
+      "routes": [
+        "/admin"
+      ]
+    },
+    {
+      "id": "src/screens/Dashboard/Admin/Cameras.jsx",
+      "label": "Cameras",
+      "routes": [
+        "/admin/cameras"
+      ]
+    },
+    {
+      "id": "src/screens/Dashboard/Admin/CameraForm.jsx",
+      "label": "CameraForm",
+      "routes": [
+        "/admin/cameras/new",
+        "/admin/cameras/:id/edit"
+      ]
+    },
+    {
+      "id": "src/screens/Dashboard/Admin/CameraDetail.jsx",
+      "label": "CameraDetail",
+      "routes": [
+        "/admin/cameras/:id"
+      ]
     }
   ],
   "edges": [
@@ -171,6 +200,86 @@
           "column": 25,
           "endColumn": 43,
           "sourceFile": "src\\screens\\PasswordResetSuccess\\PasswordResetSuccess.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\screens\\Dashboard\\Admin\\Cameras.jsx:129:14-to-src\\screens\\Dashboard\\Admin\\CameraForm.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\Cameras.jsx",
+      "target": "src\\screens\\Dashboard\\Admin\\CameraForm.jsx",
+      "data": {
+        "viaRoute": "/admin/cameras/new",
+        "trigger": {
+          "element": "<Link to=\"/admin/cameras/new\">Cadastrar Câmera</Link>",
+          "line": 129,
+          "endLine": 129,
+          "column": 14,
+          "endColumn": 67,
+          "sourceFile": "src\\screens\\Dashboard\\Admin\\Cameras.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\screens\\Dashboard\\Admin\\CameraForm.jsx:53:4-to-src\\screens\\Dashboard\\Admin\\Cameras.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\CameraForm.jsx",
+      "target": "src\\screens\\Dashboard\\Admin\\Cameras.jsx",
+      "data": {
+        "viaRoute": "/admin/cameras",
+        "trigger": {
+          "element": "navigate('/admin/cameras')",
+          "line": 53,
+          "endLine": 53,
+          "column": 4,
+          "endColumn": 30,
+          "sourceFile": "src\\screens\\Dashboard\\Admin\\CameraForm.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\screens\\Dashboard\\Admin\\CameraDetail.jsx:29:4-to-src\\screens\\Dashboard\\Admin\\Cameras.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\CameraDetail.jsx",
+      "target": "src\\screens\\Dashboard\\Admin\\Cameras.jsx",
+      "data": {
+        "viaRoute": "/admin/cameras",
+        "trigger": {
+          "element": "navigate('/admin/cameras')",
+          "line": 29,
+          "endLine": 29,
+          "column": 4,
+          "endColumn": 30,
+          "sourceFile": "src\\screens\\Dashboard\\Admin\\CameraDetail.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\screens\\Dashboard\\Admin\\CameraDetail.jsx:37:33-to-src\\screens\\Dashboard\\Admin\\Cameras.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\CameraDetail.jsx",
+      "target": "src\\screens\\Dashboard\\Admin\\Cameras.jsx",
+      "data": {
+        "viaRoute": "/admin/cameras",
+        "trigger": {
+          "element": "navigate('/admin/cameras')",
+          "line": 37,
+          "endLine": 37,
+          "column": 33,
+          "endColumn": 59,
+          "sourceFile": "src\\screens\\Dashboard\\Admin\\CameraDetail.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\screens\\Dashboard\\Admin\\CameraDetail.jsx:53:27-to-src\\screens\\Dashboard\\Admin\\Cameras.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\CameraDetail.jsx",
+      "target": "src\\screens\\Dashboard\\Admin\\Cameras.jsx",
+      "data": {
+        "viaRoute": "/admin/cameras",
+        "trigger": {
+          "element": "navigate('/admin/cameras')",
+          "line": 53,
+          "endLine": 53,
+          "column": 27,
+          "endColumn": 53,
+          "sourceFile": "src\\screens\\Dashboard\\Admin\\CameraDetail.jsx"
         }
       }
     }
