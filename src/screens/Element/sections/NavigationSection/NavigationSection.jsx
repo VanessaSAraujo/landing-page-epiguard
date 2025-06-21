@@ -45,7 +45,7 @@ export const NavigationSection = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-8 py-1">
         {/* Logo */}
         <img
-          className="h-[95px] sm:h-[105px]"
+          className="h-[6rem] sm:h-[7rem]"
           alt="EPIGuard Logo"
           src={logo}
         />
@@ -72,7 +72,7 @@ export const NavigationSection = () => {
         {/* Botão Desktop */}
         <div className="hidden md:block">
           <Button
-            className="bg-[#03a650] hover:bg-[#038a42] w-[200px] h-[35px] rounded-[10px] text-white font-medium"
+            className="bg-[#03a650] hover:bg-[#038a42] w-[12.5rem] h-[2.2rem] rounded-[0.6rem] text-white font-medium"
             onClick={() => window.location.href = '/login'}
           >
             Acesso à Plataforma
@@ -111,7 +111,7 @@ export const NavigationSection = () => {
                 {item.name}
               </a>
             ))}
-            <Button className="mt-1 w-full bg-[#03a650] hover:bg-[#038a42] text-white font-medium rounded-[10px] h-[40px]" onClick={() => window.location.href = '/login'}>
+            <Button className="mt-1 w-full bg-[#03a650] hover:bg-[#038a42] text-white font-medium rounded-[0.6rem] h-[2.5rem]" onClick={() => window.location.href = '/login'}>
               Acesso à Plataforma
             </Button>
           </nav>

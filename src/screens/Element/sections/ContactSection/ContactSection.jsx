@@ -25,20 +25,20 @@ export const ContactSection = () => {
             {formFields.map((field) => (
               <Card
                 key={field.id}
-                className="bg-[#ebffef4c] shadow-[0px_4.04px_8.08px_#00000026] rounded-[4.04px]"
+                className="bg-[#ebffef4c] shadow-md rounded-[0.25rem]"
               >
                 <CardContent className="p-0">
                   {field.type === "input" ? (
                     <Input
                       id={field.id}
                       placeholder={field.label}
-                      className="border-none h-[41px] bg-transparent [font-family:'Poppins',Helvetica] font-extralight text-[#052461] text-base md:text-lg lg:text-xl px-9 placeholder:text-[#052461]"
+                      className="border-none h-[2.5rem] bg-transparent [font-family:'Poppins',Helvetica] font-extralight text-[#052461] text-base md:text-lg lg:text-xl px-[2.25rem] placeholder:text-[#052461]"
                     />
                   ) : (
                     <Textarea
                       id={field.id}
                       placeholder={field.label}
-                      className="border-none h-[207px] bg-transparent [font-family:'Poppins',Helvetica] font-extralight text-[#052461] text-base md:text-lg lg:text-xl px-9 py-5 placeholder:text-[#052461] resize-none"
+                      className="border-none h-[13rem] bg-transparent [font-family:'Poppins',Helvetica] font-extralight text-[#052461] text-base md:text-lg lg:text-xl px-[2.25rem] py-5 placeholder:text-[#052461] resize-none"
                     />
                   )}
                 </CardContent>
@@ -48,7 +48,7 @@ export const ContactSection = () => {
             <div className="flex justify-start mt-6">
               <Button
                 type="submit"
-                className="w-[330px] h-[41px] bg-[#03a650] rounded-[5px] shadow-[0px_4.04px_8.08px_#10133026] [font-family:'Poppins',Helvetica] font-bold text-white text-[25px]"
+                className="w-[20rem] h-[2.5rem] bg-[#03a650] rounded-[0.3rem] shadow-md [font-family:'Poppins',Helvetica] font-bold text-white text-[1.6rem]"
               >
                 Enviar
               </Button>

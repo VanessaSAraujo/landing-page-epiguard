@@ -11,6 +11,7 @@ import AdminDashboard from "./screens/Dashboard/Admin/AdminDashboard";
 import Cameras from "./screens/Dashboard/Admin/Cameras";
 import CameraDetail from "./screens/Dashboard/Admin/CameraDetail";
 import CameraForm from "./screens/Dashboard/Admin/CameraForm";
+import Relatorios from "./screens/Dashboard/Admin/Relatorios";
 
 createRoot(document.getElementById("app")).render(
   <StrictMode>
@@ -27,6 +28,7 @@ createRoot(document.getElementById("app")).render(
         <Route path="/admin/cameras/new" element={<CameraForm />} />
         <Route path="/admin/cameras/:id" element={<CameraDetail />} />
         <Route path="/admin/cameras/:id/edit" element={<CameraForm />} />
+        <Route path="/admin/reports" element={<Relatorios />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
