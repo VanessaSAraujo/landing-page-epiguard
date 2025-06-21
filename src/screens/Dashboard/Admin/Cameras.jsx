@@ -120,10 +120,10 @@ const Cameras = () => {
 
   return (
     <AdminLayout pageTitle="Câmeras">
-      <div className="bg-white p-6 rounded-lg shadow-md">
-        {/* Filtros e Busca */}
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-semibold text-gray-800">Câmeras Cadastradas</h1>
+      <div className="bg-[#f9fafb] p-4 md:p-8 rounded-2xl shadow-lg border border-gray-200">
+        {/* Título da tabela */}
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6 gap-4">
+          <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-2 md:mb-0">Câmeras Cadastradas</h2>
           <div className="flex items-center gap-4">
             <Button asChild className="bg-green-600 hover:bg-green-700 text-white font-semibold">
               <Link to="/admin/cameras/new">Cadastrar Câmera</Link>
@@ -137,7 +137,7 @@ const Cameras = () => {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input 
                 type="text" 
-                placeholder="Pesquisar..." 
+                placeholder="Busque por obra, setor ou nome da câmera" 
                 className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -147,23 +147,23 @@ const Cameras = () => {
         </div>
 
         {/* Tabela */}
-        <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
+        <div className="overflow-x-auto w-full">
+          <table className="min-w-[1010px] w-full divide-y divide-gray-200">
+            <thead className="bg-[#f3f4f6]">
               <tr>
                 {['Obra', 'Setor', 'Nome da Câmera', 'Status', 'Última Atividade', 'Ações'].map((header) => (
-                  <th key={header} scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th key={header} scope="col" className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     {header}
                   </th>
                 ))}
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="bg-white divide-y divide-gray-100">
               {currentItems.map((camera) => (
-                <tr key={camera.id}>
+                <tr key={camera.id} className="hover:bg-gray-50 transition-colors">
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{camera.obra}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{camera.setor}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{camera.nome}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{camera.setor}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{camera.nome}</td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <StatusBadge status={camera.status} />
                   </td>
@@ -185,7 +185,7 @@ const Cameras = () => {
         </div>
 
         {/* Paginação */}
-        <div className="flex justify-between items-center mt-6">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center mt-6 gap-4">
           <p className="text-sm text-gray-700">
             Exibindo {startItem} a {endItem} de {filteredItems.length} itens
           </p>

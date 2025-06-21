@@ -72,6 +72,13 @@
       "routes": [
         "/admin/cameras/:id"
       ]
+    },
+    {
+      "id": "src/screens/Dashboard/Admin/Relatorios.jsx",
+      "label": "Relatorios",
+      "routes": [
+        "/admin/reports"
+      ]
     }
   ],
   "edges": [

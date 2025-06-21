@@ -31,7 +31,7 @@ const AdminLayout = ({ children, pageTitle }) => {
         sidebarOpen={sidebarOpen}
         closeSidebar={closeSidebar}
       />
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col w-full overflow-x-hidden">
         {/* Botão hambúrguer mobile */}
         <div className="md:hidden flex items-center p-4">
           <button onClick={openSidebar} className="text-gray-700 focus:outline-none">
@@ -42,7 +42,7 @@ const AdminLayout = ({ children, pageTitle }) => {
           <span className="ml-4 text-xl font-bold">Menu</span>
         </div>
         <Header title={pageTitle} user={currentUser} />
-        <main className="flex-1 pt-8 pr-8 pl-8 pb-0">
+        <main className="flex-1 p-8 w-full">
           {children}
         </main>
       </div>
