@@ -1,4 +1,178 @@
 {
-  "nodes": [],
-  "edges": []
+  "nodes": [
+    {
+      "id": "src/screens/Element/Element.jsx",
+      "label": "Element",
+      "routes": [
+        "/"
+      ],
+      "dataModelId": "1:7414",
+      "isRoot": true
+    },
+    {
+      "id": "src/screens/ElementLogin/Login.jsx",
+      "label": "Login",
+      "routes": [
+        "/login"
+      ]
+    },
+    {
+      "id": "src/screens/ForgotPassword/ForgotPassword.jsx",
+      "label": "ForgotPassword",
+      "routes": [
+        "/forgot-password"
+      ]
+    },
+    {
+      "id": "src/screens/VerifyCode/VerifyCode.jsx",
+      "label": "VerifyCode",
+      "routes": [
+        "/verify-code"
+      ]
+    },
+    {
+      "id": "src/screens/ResetPassword/ResetPassword.jsx",
+      "label": "ResetPassword",
+      "routes": [
+        "/reset-password"
+      ]
+    },
+    {
+      "id": "src/screens/PasswordResetSuccess/PasswordResetSuccess.jsx",
+      "label": "PasswordResetSuccess",
+      "routes": [
+        "/password-reset-success"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "src\\screens\\Element\\sections\\FooterSection\\FooterSection.jsx:95:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Element\\Element.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link\n            to=\"/login\"\n            className=\"flex items-center justify-center h-[30px] bg-[#03a650] rounded-[20px] px-4 font-['Poppins',Helvetica] font-normal text-[#f2f2f2] text-xl tracking-[2.00px] hover:bg-[#028c3a] transition-colors\"\n          >\n            Acesso à Plataforma\n          </Link>",
+          "line": 95,
+          "endLine": 100,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\screens\\Element\\sections\\FooterSection\\FooterSection.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\screens\\ElementLogin\\Login.jsx:123:8-to-src\\screens\\ForgotPassword\\ForgotPassword.jsx",
+      "source": "src\\screens\\ElementLogin\\Login.jsx",
+      "target": "src\\screens\\ForgotPassword\\ForgotPassword.jsx",
+      "data": {
+        "viaRoute": "/forgot-password",
+        "trigger": {
+          "element": "<Link\r\n          to=\"/forgot-password\"\r\n          className=\"text-sm font-semibold text-[#222222] opacity-70 mx-auto block text-center\"\r\n        >\r\n          Esqueci minha senha\r\n        </Link>",
+          "line": 123,
+          "endLine": 128,
+          "column": 8,
+          "endColumn": 15,
+          "sourceFile": "src\\screens\\ElementLogin\\Login.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\screens\\ForgotPassword\\ForgotPassword.jsx:14:4-to-src\\screens\\VerifyCode\\VerifyCode.jsx",
+      "source": "src\\screens\\ForgotPassword\\ForgotPassword.jsx",
+      "target": "src\\screens\\VerifyCode\\VerifyCode.jsx",
+      "data": {
+        "viaRoute": "/verify-code",
+        "trigger": {
+          "element": "navigate(\"/verify-code\")",
+          "line": 14,
+          "endLine": 14,
+          "column": 4,
+          "endColumn": 28,
+          "sourceFile": "src\\screens\\ForgotPassword\\ForgotPassword.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\screens\\ForgotPassword\\ForgotPassword.jsx:41:8-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\ForgotPassword\\ForgotPassword.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link\r\n          to=\"/login\"\r\n          className=\"flex items-center justify-center gap-2 text-sm font-semibold text-[#222222] opacity-70\"\r\n        >\r\n          <ChevronLeft className=\"w-4 h-4\" />\r\n          Voltar para o Início\r\n        </Link>",
+          "line": 41,
+          "endLine": 47,
+          "column": 8,
+          "endColumn": 15,
+          "sourceFile": "src\\screens\\ForgotPassword\\ForgotPassword.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\screens\\VerifyCode\\VerifyCode.jsx:47:6-to-src\\screens\\ResetPassword\\ResetPassword.jsx",
+      "source": "src\\screens\\VerifyCode\\VerifyCode.jsx",
+      "target": "src\\screens\\ResetPassword\\ResetPassword.jsx",
+      "data": {
+        "viaRoute": "/reset-password",
+        "trigger": {
+          "element": "navigate(\"/reset-password\")",
+          "line": 47,
+          "endLine": 47,
+          "column": 6,
+          "endColumn": 33,
+          "sourceFile": "src\\screens\\VerifyCode\\VerifyCode.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\screens\\VerifyCode\\VerifyCode.jsx:85:8-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\VerifyCode\\VerifyCode.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link\r\n          to=\"/login\"\r\n          className=\"flex items-center justify-center gap-2 text-sm font-semibold text-[#222222] opacity-70\"\r\n        >\r\n          <ChevronLeft className=\"w-4 h-4\" />\r\n          Voltar para o Início\r\n        </Link>",
+          "line": 85,
+          "endLine": 91,
+          "column": 8,
+          "endColumn": 15,
+          "sourceFile": "src\\screens\\VerifyCode\\VerifyCode.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\screens\\ResetPassword\\ResetPassword.jsx:49:6-to-src\\screens\\PasswordResetSuccess\\PasswordResetSuccess.jsx",
+      "source": "src\\screens\\ResetPassword\\ResetPassword.jsx",
+      "target": "src\\screens\\PasswordResetSuccess\\PasswordResetSuccess.jsx",
+      "data": {
+        "viaRoute": "/password-reset-success",
+        "trigger": {
+          "element": "navigate(\"/password-reset-success\")",
+          "line": 49,
+          "endLine": 49,
+          "column": 6,
+          "endColumn": 41,
+          "sourceFile": "src\\screens\\ResetPassword\\ResetPassword.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\screens\\PasswordResetSuccess\\PasswordResetSuccess.jsx:27:25-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\PasswordResetSuccess\\PasswordResetSuccess.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "navigate('/login')",
+          "line": 27,
+          "endLine": 27,
+          "column": 25,
+          "endColumn": 43,
+          "sourceFile": "src\\screens\\PasswordResetSuccess\\PasswordResetSuccess.jsx"
+        }
+      }
+    }
+  ]
 }

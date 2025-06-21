@@ -6,7 +6,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "../../../../components/ui/navigation-menu";
-import { Menu } from "lucide-react"; // ou use qualquer ícone de hamburguer
+import { Menu } from "lucide-react"; 
 
 export const NavigationSection = () => {
   const [activeItem, setActiveItem] = useState("Início");
@@ -98,7 +98,7 @@ export const NavigationSection = () => {
                   activeItem === item.name ? "text-[#03a650]" : "text-black"
                 }`}
                 onClick={(e) => {
-                  e.preventDefault(); // impede o comportamento padrão
+                  e.preventDefault();
                   const section = document.querySelector(item.href);
                   if (section) {
                     section.scrollIntoView({ behavior: "smooth" });
