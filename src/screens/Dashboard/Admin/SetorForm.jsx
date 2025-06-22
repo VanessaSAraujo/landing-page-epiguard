@@ -47,6 +47,8 @@ const SetorForm = () => {
     navigate('/admin/general-registrations');
   };
 
+  const inputStyle = "w-full h-10 px-4 py-2 text-base border border-[#DFEAF2] rounded-lg focus:outline-none focus:ring-0 focus:border-[#03A650]";
+
   return (
     <AdminLayout pageTitle={isEditMode ? "Editar Setor" : "Cadastrar Setor"}>
       <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 w-full">
@@ -59,13 +61,13 @@ const SetorForm = () => {
             {/* Nome do Setor */}
             <div>
               <label htmlFor="nome" className="block text-sm font-medium text-gray-700 mb-1">Nome do Setor</label>
-              <input type="text" name="nome" id="nome" value={formData.nome} onChange={handleChange} placeholder="Digite o nome do setor" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500" />
+              <input type="text" name="nome" id="nome" value={formData.nome} onChange={handleChange} placeholder="Digite o nome do setor" className={inputStyle} />
             </div>
 
             {/* Obra Vinculada */}
             <div>
               <label htmlFor="obraVinculada" className="block text-sm font-medium text-gray-700 mb-1">Obra Vinculada</label>
-              <select name="obraVinculada" id="obraVinculada" value={formData.obraVinculada} onChange={handleChange} className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+              <select name="obraVinculada" id="obraVinculada" value={formData.obraVinculada} onChange={handleChange} className={inputStyle}>
                 <option value="">Selecione a obra</option>
                 {obras.map(obra => <option key={obra} value={obra}>{obra}</option>)}
               </select>
@@ -74,7 +76,7 @@ const SetorForm = () => {
             {/* Descrição */}
             <div className="md:col-span-2">
               <label htmlFor="descricao" className="block text-sm font-medium text-gray-700 mb-1">Descrição</label>
-              <textarea name="descricao" id="descricao" value={formData.descricao} onChange={handleChange} rows="4" placeholder="Digite uma descrição (opcional)" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"></textarea>
+              <textarea name="descricao" id="descricao" value={formData.descricao} onChange={handleChange} rows="4" placeholder="Digite uma descrição (opcional)" className={inputStyle}></textarea>
             </div>
           </div>
 

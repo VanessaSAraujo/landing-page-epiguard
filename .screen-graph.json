@@ -117,6 +117,13 @@
         "/admin/general-registrations/setor/new",
         "/admin/general-registrations/setor/:id/edit"
       ]
+    },
+    {
+      "id": "src/screens/Dashboard/Admin/Settings.jsx",
+      "label": "Settings",
+      "routes": [
+        "/admin/settings"
+      ]
     }
   ],
   "edges": [
@@ -137,31 +144,31 @@
       }
     },
     {
-      "id": "src\\screens\\ElementLogin\\Login.jsx:123:8-to-src\\screens\\ForgotPassword\\ForgotPassword.jsx",
+      "id": "src\\screens\\ElementLogin\\Login.jsx:74:12-to-src\\screens\\ForgotPassword\\ForgotPassword.jsx",
       "source": "src\\screens\\ElementLogin\\Login.jsx",
       "target": "src\\screens\\ForgotPassword\\ForgotPassword.jsx",
       "data": {
         "viaRoute": "/forgot-password",
         "trigger": {
-          "element": "<Link\r\n          to=\"/forgot-password\"\r\n          className=\"text-sm font-semibold text-[#222222] opacity-70 mx-auto block text-center\"\r\n        >\r\n          Esqueci minha senha\r\n        </Link>",
-          "line": 123,
-          "endLine": 128,
-          "column": 8,
-          "endColumn": 15,
+          "element": "<Link\r\n              to=\"/forgot-password\"\r\n              className=\"font-medium text-green-600 hover:text-green-500\"\r\n            >\r\n              Esqueceu sua senha?\r\n            </Link>",
+          "line": 74,
+          "endLine": 79,
+          "column": 12,
+          "endColumn": 19,
           "sourceFile": "src\\screens\\ElementLogin\\Login.jsx"
         }
       }
     },
     {
-      "id": "src\\screens\\ForgotPassword\\ForgotPassword.jsx:14:4-to-src\\screens\\VerifyCode\\VerifyCode.jsx",
+      "id": "src\\screens\\ForgotPassword\\ForgotPassword.jsx:15:4-to-src\\screens\\VerifyCode\\VerifyCode.jsx",
       "source": "src\\screens\\ForgotPassword\\ForgotPassword.jsx",
       "target": "src\\screens\\VerifyCode\\VerifyCode.jsx",
       "data": {
         "viaRoute": "/verify-code",
         "trigger": {
           "element": "navigate(\"/verify-code\")",
-          "line": 14,
-          "endLine": 14,
+          "line": 15,
+          "endLine": 15,
           "column": 4,
           "endColumn": 28,
           "sourceFile": "src\\screens\\ForgotPassword\\ForgotPassword.jsx"
@@ -169,17 +176,17 @@
       }
     },
     {
-      "id": "src\\screens\\ForgotPassword\\ForgotPassword.jsx:41:8-to-src\\screens\\ElementLogin\\Login.jsx",
+      "id": "src\\screens\\ForgotPassword\\ForgotPassword.jsx:49:10-to-src\\screens\\ElementLogin\\Login.jsx",
       "source": "src\\screens\\ForgotPassword\\ForgotPassword.jsx",
       "target": "src\\screens\\ElementLogin\\Login.jsx",
       "data": {
         "viaRoute": "/login",
         "trigger": {
-          "element": "<Link\r\n          to=\"/login\"\r\n          className=\"flex items-center justify-center gap-2 text-sm font-semibold text-[#222222] opacity-70\"\r\n        >\r\n          <ChevronLeft className=\"w-4 h-4\" />\r\n          Voltar para o Início\r\n        </Link>",
-          "line": 41,
-          "endLine": 47,
-          "column": 8,
-          "endColumn": 15,
+          "element": "<Link\r\n            to=\"/login\"\r\n            className=\"text-sm font-medium text-green-600 hover:text-green-500\"\r\n          >\r\n            Voltar para o Login\r\n          </Link>",
+          "line": 49,
+          "endLine": 54,
+          "column": 10,
+          "endColumn": 17,
           "sourceFile": "src\\screens\\ForgotPassword\\ForgotPassword.jsx"
         }
       }
@@ -217,17 +224,17 @@
       }
     },
     {
-      "id": "src\\screens\\ResetPassword\\ResetPassword.jsx:49:6-to-src\\screens\\PasswordResetSuccess\\PasswordResetSuccess.jsx",
+      "id": "src\\screens\\ResetPassword\\ResetPassword.jsx:25:4-to-src\\screens\\PasswordResetSuccess\\PasswordResetSuccess.jsx",
       "source": "src\\screens\\ResetPassword\\ResetPassword.jsx",
       "target": "src\\screens\\PasswordResetSuccess\\PasswordResetSuccess.jsx",
       "data": {
         "viaRoute": "/password-reset-success",
         "trigger": {
           "element": "navigate(\"/password-reset-success\")",
-          "line": 49,
-          "endLine": 49,
-          "column": 6,
-          "endColumn": 41,
+          "line": 25,
+          "endLine": 25,
+          "column": 4,
+          "endColumn": 39,
           "sourceFile": "src\\screens\\ResetPassword\\ResetPassword.jsx"
         }
       }
@@ -249,6 +256,38 @@
       }
     },
     {
+      "id": "src\\components\\layouts\\Sidebar.jsx:108:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link\r\n            to=\"/login\"\r\n            className={`flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\r\n            ${isCollapsed ? 'justify-center' : ''}`}\r\n          >\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            {!isCollapsed && <span className=\"ml-4 font-semibold\">Sair</span>}\r\n          </Link>",
+          "line": 108,
+          "endLine": 115,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\layouts\\Sidebar.jsx:162:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link to=\"/login\"\r\n            className=\"flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\">\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            <span className=\"ml-4 font-semibold\">Sair</span>\r\n          </Link>",
+          "line": 162,
+          "endLine": 166,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
+        }
+      }
+    },
+    {
       "id": "src\\screens\\Dashboard\\Admin\\Cameras.jsx:129:14-to-src\\screens\\Dashboard\\Admin\\CameraForm.jsx",
       "source": "src\\screens\\Dashboard\\Admin\\Cameras.jsx",
       "target": "src\\screens\\Dashboard\\Admin\\CameraForm.jsx",
@@ -265,17 +304,65 @@
       }
     },
     {
-      "id": "src\\screens\\Dashboard\\Admin\\CameraForm.jsx:53:4-to-src\\screens\\Dashboard\\Admin\\Cameras.jsx",
+      "id": "src\\components\\layouts\\Sidebar.jsx:108:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link\r\n            to=\"/login\"\r\n            className={`flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\r\n            ${isCollapsed ? 'justify-center' : ''}`}\r\n          >\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            {!isCollapsed && <span className=\"ml-4 font-semibold\">Sair</span>}\r\n          </Link>",
+          "line": 108,
+          "endLine": 115,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\layouts\\Sidebar.jsx:162:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link to=\"/login\"\r\n            className=\"flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\">\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            <span className=\"ml-4 font-semibold\">Sair</span>\r\n          </Link>",
+          "line": 162,
+          "endLine": 166,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\screens\\Dashboard\\Admin\\CameraForm.jsx:72:6-to-src\\screens\\Dashboard\\Admin\\Cameras.jsx",
       "source": "src\\screens\\Dashboard\\Admin\\CameraForm.jsx",
       "target": "src\\screens\\Dashboard\\Admin\\Cameras.jsx",
       "data": {
         "viaRoute": "/admin/cameras",
         "trigger": {
           "element": "navigate('/admin/cameras')",
-          "line": 53,
-          "endLine": 53,
-          "column": 4,
-          "endColumn": 30,
+          "line": 72,
+          "endLine": 72,
+          "column": 6,
+          "endColumn": 32,
+          "sourceFile": "src\\screens\\Dashboard\\Admin\\CameraForm.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\screens\\Dashboard\\Admin\\CameraForm.jsx:199:69-to-src\\screens\\Dashboard\\Admin\\Cameras.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\CameraForm.jsx",
+      "target": "src\\screens\\Dashboard\\Admin\\Cameras.jsx",
+      "data": {
+        "viaRoute": "/admin/cameras",
+        "trigger": {
+          "element": "navigate('/admin/cameras')",
+          "line": 199,
+          "endLine": 199,
+          "column": 69,
+          "endColumn": 95,
           "sourceFile": "src\\screens\\Dashboard\\Admin\\CameraForm.jsx"
         }
       }
@@ -329,6 +416,102 @@
       }
     },
     {
+      "id": "src\\components\\layouts\\Sidebar.jsx:108:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link\r\n            to=\"/login\"\r\n            className={`flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\r\n            ${isCollapsed ? 'justify-center' : ''}`}\r\n          >\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            {!isCollapsed && <span className=\"ml-4 font-semibold\">Sair</span>}\r\n          </Link>",
+          "line": 108,
+          "endLine": 115,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\layouts\\Sidebar.jsx:162:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link to=\"/login\"\r\n            className=\"flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\">\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            <span className=\"ml-4 font-semibold\">Sair</span>\r\n          </Link>",
+          "line": 162,
+          "endLine": 166,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\layouts\\Sidebar.jsx:108:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link\r\n            to=\"/login\"\r\n            className={`flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\r\n            ${isCollapsed ? 'justify-center' : ''}`}\r\n          >\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            {!isCollapsed && <span className=\"ml-4 font-semibold\">Sair</span>}\r\n          </Link>",
+          "line": 108,
+          "endLine": 115,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\layouts\\Sidebar.jsx:162:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link to=\"/login\"\r\n            className=\"flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\">\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            <span className=\"ml-4 font-semibold\">Sair</span>\r\n          </Link>",
+          "line": 162,
+          "endLine": 166,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\layouts\\Sidebar.jsx:108:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link\r\n            to=\"/login\"\r\n            className={`flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\r\n            ${isCollapsed ? 'justify-center' : ''}`}\r\n          >\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            {!isCollapsed && <span className=\"ml-4 font-semibold\">Sair</span>}\r\n          </Link>",
+          "line": 108,
+          "endLine": 115,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\layouts\\Sidebar.jsx:162:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link to=\"/login\"\r\n            className=\"flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\">\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            <span className=\"ml-4 font-semibold\">Sair</span>\r\n          </Link>",
+          "line": 162,
+          "endLine": 166,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
+        }
+      }
+    },
+    {
       "id": "src\\screens\\Dashboard\\Admin\\Users.jsx:103:16-to-src\\screens\\Dashboard\\Admin\\UserForm.jsx",
       "source": "src\\screens\\Dashboard\\Admin\\Users.jsx",
       "target": "src\\screens\\Dashboard\\Admin\\UserForm.jsx",
@@ -341,6 +524,38 @@
           "column": 16,
           "endColumn": 23,
           "sourceFile": "src\\screens\\Dashboard\\Admin\\Users.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\layouts\\Sidebar.jsx:108:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link\r\n            to=\"/login\"\r\n            className={`flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\r\n            ${isCollapsed ? 'justify-center' : ''}`}\r\n          >\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            {!isCollapsed && <span className=\"ml-4 font-semibold\">Sair</span>}\r\n          </Link>",
+          "line": 108,
+          "endLine": 115,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\layouts\\Sidebar.jsx:162:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link to=\"/login\"\r\n            className=\"flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\">\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            <span className=\"ml-4 font-semibold\">Sair</span>\r\n          </Link>",
+          "line": 162,
+          "endLine": 166,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
         }
       }
     },
@@ -361,18 +576,50 @@
       }
     },
     {
-      "id": "src\\screens\\Dashboard\\Admin\\UserForm.jsx:209:67-to-src\\screens\\Dashboard\\Admin\\Users.jsx",
+      "id": "src\\screens\\Dashboard\\Admin\\UserForm.jsx:211:67-to-src\\screens\\Dashboard\\Admin\\Users.jsx",
       "source": "src\\screens\\Dashboard\\Admin\\UserForm.jsx",
       "target": "src\\screens\\Dashboard\\Admin\\Users.jsx",
       "data": {
         "viaRoute": "/admin/users",
         "trigger": {
           "element": "navigate('/admin/users')",
-          "line": 209,
-          "endLine": 209,
+          "line": 211,
+          "endLine": 211,
           "column": 67,
           "endColumn": 91,
           "sourceFile": "src\\screens\\Dashboard\\Admin\\UserForm.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\layouts\\Sidebar.jsx:108:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link\r\n            to=\"/login\"\r\n            className={`flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\r\n            ${isCollapsed ? 'justify-center' : ''}`}\r\n          >\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            {!isCollapsed && <span className=\"ml-4 font-semibold\">Sair</span>}\r\n          </Link>",
+          "line": 108,
+          "endLine": 115,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\layouts\\Sidebar.jsx:162:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link to=\"/login\"\r\n            className=\"flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\">\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            <span className=\"ml-4 font-semibold\">Sair</span>\r\n          </Link>",
+          "line": 162,
+          "endLine": 166,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
         }
       }
     },
@@ -409,6 +656,38 @@
       }
     },
     {
+      "id": "src\\components\\layouts\\Sidebar.jsx:108:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link\r\n            to=\"/login\"\r\n            className={`flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\r\n            ${isCollapsed ? 'justify-center' : ''}`}\r\n          >\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            {!isCollapsed && <span className=\"ml-4 font-semibold\">Sair</span>}\r\n          </Link>",
+          "line": 108,
+          "endLine": 115,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\layouts\\Sidebar.jsx:162:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link to=\"/login\"\r\n            className=\"flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\">\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            <span className=\"ml-4 font-semibold\">Sair</span>\r\n          </Link>",
+          "line": 162,
+          "endLine": 166,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
+        }
+      }
+    },
+    {
       "id": "src\\screens\\Dashboard\\Admin\\ObraForm.jsx:48:4-to-src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
       "source": "src\\screens\\Dashboard\\Admin\\ObraForm.jsx",
       "target": "src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
@@ -425,18 +704,50 @@
       }
     },
     {
-      "id": "src\\screens\\Dashboard\\Admin\\ObraForm.jsx:107:67-to-src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
+      "id": "src\\screens\\Dashboard\\Admin\\ObraForm.jsx:103:67-to-src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
       "source": "src\\screens\\Dashboard\\Admin\\ObraForm.jsx",
       "target": "src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
       "data": {
         "viaRoute": "/admin/general-registrations",
         "trigger": {
           "element": "navigate('/admin/general-registrations')",
-          "line": 107,
-          "endLine": 107,
+          "line": 103,
+          "endLine": 103,
           "column": 67,
           "endColumn": 107,
           "sourceFile": "src\\screens\\Dashboard\\Admin\\ObraForm.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\layouts\\Sidebar.jsx:108:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link\r\n            to=\"/login\"\r\n            className={`flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\r\n            ${isCollapsed ? 'justify-center' : ''}`}\r\n          >\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            {!isCollapsed && <span className=\"ml-4 font-semibold\">Sair</span>}\r\n          </Link>",
+          "line": 108,
+          "endLine": 115,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\layouts\\Sidebar.jsx:162:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link to=\"/login\"\r\n            className=\"flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\">\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            <span className=\"ml-4 font-semibold\">Sair</span>\r\n          </Link>",
+          "line": 162,
+          "endLine": 166,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
         }
       }
     },
@@ -457,18 +768,82 @@
       }
     },
     {
-      "id": "src\\screens\\Dashboard\\Admin\\SetorForm.jsx:83:67-to-src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
+      "id": "src\\screens\\Dashboard\\Admin\\SetorForm.jsx:85:67-to-src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
       "source": "src\\screens\\Dashboard\\Admin\\SetorForm.jsx",
       "target": "src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
       "data": {
         "viaRoute": "/admin/general-registrations",
         "trigger": {
           "element": "navigate('/admin/general-registrations')",
-          "line": 83,
-          "endLine": 83,
+          "line": 85,
+          "endLine": 85,
           "column": 67,
           "endColumn": 107,
           "sourceFile": "src\\screens\\Dashboard\\Admin\\SetorForm.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\layouts\\Sidebar.jsx:108:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link\r\n            to=\"/login\"\r\n            className={`flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\r\n            ${isCollapsed ? 'justify-center' : ''}`}\r\n          >\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            {!isCollapsed && <span className=\"ml-4 font-semibold\">Sair</span>}\r\n          </Link>",
+          "line": 108,
+          "endLine": 115,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\layouts\\Sidebar.jsx:162:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link to=\"/login\"\r\n            className=\"flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\">\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            <span className=\"ml-4 font-semibold\">Sair</span>\r\n          </Link>",
+          "line": 162,
+          "endLine": 166,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\layouts\\Sidebar.jsx:108:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link\r\n            to=\"/login\"\r\n            className={`flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\r\n            ${isCollapsed ? 'justify-center' : ''}`}\r\n          >\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            {!isCollapsed && <span className=\"ml-4 font-semibold\">Sair</span>}\r\n          </Link>",
+          "line": 108,
+          "endLine": 115,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\layouts\\Sidebar.jsx:162:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link to=\"/login\"\r\n            className=\"flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\">\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            <span className=\"ml-4 font-semibold\">Sair</span>\r\n          </Link>",
+          "line": 162,
+          "endLine": 166,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
         }
       }
     }

@@ -1,132 +1,89 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../components/ui/button";
-import FloatingLabelInput from "../../components/ui/FloatingLabelInput";
+import { Input } from "../../components/ui/input";
 import AuthLayout from "../../components/layouts/AuthLayout";
 
 export const Login = () => {
-  const [formData, setFormData] = useState({ email: '', password: '' });
-  const [errors, setErrors] = useState({});
-  const [touched, setTouched] = useState({});
+  const navigate = useNavigate();
 
-  const validate = () => {
-    const newErrors = {};
-
-    // Validação de E-mail
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formData.email) {
-      newErrors.email = "O e-mail é obrigatório.";
-    } else if (!emailRegex.test(formData.email)) {
-      newErrors.email = "Digite um e-mail válido.";
-    }
-
-    // Validação de Senha
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,15}$/;
-    if (!formData.password) {
-      newErrors.password = "A senha é obrigatória.";
-    } else if (formData.password.length < 8 || formData.password.length > 15) {
-      newErrors.password = "A senha deve ter entre 8 e 15 caracteres.";
-    } else if (!passwordRegex.test(formData.password)) {
-      newErrors.password = "A senha deve conter letras e números.";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+  const handleLogin = (e) => {
+    e.preventDefault();
+    // Lógica de login aqui
+    // Exemplo: navegar para o dashboard do admin em caso de sucesso
+    navigate('/admin/dashboard');
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleLogin = () => {
-    if (validate()) {
-      console.log("Login com sucesso:", formData);
-      // Aqui iria a lógica de login real
-    } else {
-      console.log("Falha na validação");
-    }
-  };
-
-  // Validação individual de campo
-  const validateField = (name, value) => {
-    let error = '';
-    if (name === 'email') {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!value) {
-        error = 'O e-mail é obrigatório.';
-      } else if (!emailRegex.test(value)) {
-        error = 'Digite um e-mail válido.';
-      }
-    }
-    if (name === 'password') {
-      const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,15}$/;
-      if (!value) {
-        error = 'A senha é obrigatória.';
-      } else if (value.length < 8 || value.length > 15) {
-        error = 'A senha deve ter entre 8 e 15 caracteres.';
-      } else if (!passwordRegex.test(value)) {
-        error = 'A senha deve conter letras e números.';
-      }
-    }
-    setErrors((prev) => ({ ...prev, [name]: error }));
-  };
-
-  const handleBlur = (e) => {
-    const { name, value } = e.target;
-    setTouched((prev) => ({ ...prev, [name]: true }));
-    validateField(name, value);
-  };
+  const inputStyle = "w-full h-10 px-4 py-2 text-base border border-[#DFEAF2] rounded-lg focus:outline-none focus:ring-0 focus:border-[#03A650]";
 
   return (
-    <AuthLayout>
-      <div className="space-y-8">
-        <div className="text-center space-y-2">
-          <h1 className="font-bold text-4xl text-[#03a650] font-['Poppins',Helvetica]">
-            EPIGUARD
-          </h1>
-          <p className="text-lg text-[#222222] font-['Poppins',Helvetica]">
-            Faça Login na sua conta
-          </p>
-        </div>
-
-        <div className="space-y-6">
-          <FloatingLabelInput
-            type="email"
-            label="E-mail"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={!!errors.email && touched.email}
-            helperText={touched.email ? errors.email : ''}
-          />
-          <FloatingLabelInput
-            type="password"
-            label="Senha"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={!!errors.password && touched.password}
-            helperText={touched.password ? errors.password : ''}
+    <AuthLayout
+      title="Login"
+      subtitle="Bem-vindo de volta! Por favor, insira suas credenciais."
+    >
+      <form onSubmit={handleLogin} className="space-y-6">
+        <div>
+          <label 
+            htmlFor="email" 
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            E-mail
+          </label>
+          <Input 
+            id="email" 
+            type="email" 
+            required 
+            className={inputStyle} 
+            placeholder="seuemail@exemplo.com"
           />
         </div>
 
-        <Button
-          onClick={handleLogin}
-          className="w-full h-[47px] bg-[#04bf45] hover:bg-[#03a650] rounded-lg text-xl font-['Poppins',Helvetica]"
-        >
+        <div>
+           <label 
+            htmlFor="password" 
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Senha
+          </label>
+          <Input 
+            id="password" 
+            type="password" 
+            required 
+            className={inputStyle}
+            placeholder="********"
+          />
+        </div>
+
+        <div className="flex items-center justify-between">
+          <div className="flex items-center">
+            <input
+              id="remember-me"
+              name="remember-me"
+              type="checkbox"
+              className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+            />
+            <label
+              htmlFor="remember-me"
+              className="ml-2 block text-sm text-gray-900"
+            >
+              Lembrar-me
+            </label>
+          </div>
+
+          <div className="text-sm">
+            <Link
+              to="/forgot-password"
+              className="font-medium text-green-600 hover:text-green-500"
+            >
+              Esqueceu sua senha?
+            </Link>
+          </div>
+        </div>
+
+        <Button type="submit" className="w-full">
           Entrar
         </Button>
-
-        <Link
-          to="/forgot-password"
-          className="text-sm font-semibold text-[#222222] opacity-70 mx-auto block text-center"
-        >
-          Esqueci minha senha
-        </Link>
-      </div>
+      </form>
     </AuthLayout>
   );
 };

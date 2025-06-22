@@ -1,51 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ChevronLeft } from "lucide-react";
 import AuthLayout from "../../components/layouts/AuthLayout";
 import { Button } from "../../components/ui/button";
-import FloatingLabelInput from "../../components/ui/FloatingLabelInput";
+import { Input } from "../../components/ui/input";
 
 const ForgotPassword = () => {
+  const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
-  const handleContinue = () => {
-    // Aqui você adicionaria a lógica para enviar o email
-    // e então navegar para a próxima página.
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Lógica para enviar o e-mail de recuperação
+    console.log("Solicitação de recuperação para o e-mail:", email);
     navigate("/verify-code");
   };
+  
+  const inputStyle = "w-full h-10 px-4 py-2 text-base border border-[#DFEAF2] rounded-lg focus:outline-none focus:ring-0 focus:border-[#03A650]";
 
   return (
-    <AuthLayout>
-      <div className="text-center space-y-8">
+    <AuthLayout
+      title="Esqueceu sua Senha?"
+      subtitle="Não se preocupe! Insira seu e-mail para receber um código de verificação."
+    >
+      <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <h2 className="text-2xl font-bold text-[#03a650] font-['Poppins',Helvetica]">
-            Esqueci Minha Senha
-          </h2>
-          <p className="text-gray-600 mt-2 max-w-sm mx-auto">
-            Digite seu e-mail para o processo de verificação, enviaremos um código de 4 dígitos para seu e-mail.
-          </p>
+          <label 
+            htmlFor="email" 
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            E-mail
+          </label>
+          <Input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className={inputStyle}
+            placeholder="Digite seu e-mail"
+          />
         </div>
 
-        <FloatingLabelInput
-          type="email"
-          label="E-mail"
-        />
-
-        <Button
-          onClick={handleContinue}
-          className="w-full h-[47px] bg-[#04bf45] hover:bg-[#03a650] rounded-lg text-xl font-['Poppins',Helvetica]"
-        >
-          Continuar
+        <Button type="submit" className="w-full">
+          Enviar Código
         </Button>
-
-        <Link
-          to="/login"
-          className="flex items-center justify-center gap-2 text-sm font-semibold text-[#222222] opacity-70"
-        >
-          <ChevronLeft className="w-4 h-4" />
-          Voltar para o Início
-        </Link>
-      </div>
+        
+        <div className="text-center">
+          <Link
+            to="/login"
+            className="text-sm font-medium text-green-600 hover:text-green-500"
+          >
+            Voltar para o Login
+          </Link>
+        </div>
+      </form>
     </AuthLayout>
   );
 };

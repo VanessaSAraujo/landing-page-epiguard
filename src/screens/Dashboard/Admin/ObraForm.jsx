@@ -4,6 +4,8 @@ import InputMask from 'react-input-mask';
 import AdminLayout from '../../../components/layouts/AdminLayout';
 import { Button } from '../../../components/ui/button';
 import obrasData from '../../../data/obrasData';
+import { Input } from '../../../components/ui/input';
+import { Textarea } from '../../../components/ui/textarea';
 
 const ObraForm = () => {
   const navigate = useNavigate();
@@ -17,6 +19,9 @@ const ObraForm = () => {
     previsaoTermino: '',
     descricao: '',
   });
+  
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
 
   useEffect(() => {
     if (isEditMode) {
@@ -25,7 +30,7 @@ const ObraForm = () => {
         setFormData({
           nome: obraToEdit.nome || '',
           endereco: obraToEdit.endereco || '',
-          dataInicio: obraToEdit.dataInicio || '', // Supondo que o formato já venha correto
+          dataInicio: obraToEdit.dataInicio || '',
           previsaoTermino: obraToEdit.termino || '',
           descricao: obraToEdit.descricao || '',
         });
@@ -33,13 +38,47 @@ const ObraForm = () => {
     }
   }, [id, isEditMode]);
 
+  const validate = (fieldData = formData) => {
+    const newErrors = {};
+    if (!fieldData.nome) newErrors.nome = 'O nome da obra é obrigatório.';
+    if (!fieldData.endereco) newErrors.endereco = 'O endereço é obrigatório.';
+    if (!(fieldData.previsaoTermino || '').replace(/[^\d]/g, '')) {
+      newErrors.previsaoTermino = 'A previsão de término é obrigatória.';
+    }
+    return newErrors;
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+     if (touched[name]) {
+      const newErrors = validate({ ...formData, [name]: value });
+      setErrors(prev => ({ ...prev, [name]: newErrors[name] }));
+    }
+  };
+
+  const handleBlur = (e) => {
+    const { name } = e.target;
+    setTouched(prev => ({...prev, [name]: true}));
+    const newErrors = validate(formData);
+    setErrors(prev => ({...prev, [name]: newErrors[name]}));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const newErrors = validate(formData);
+    setErrors(newErrors);
+    setTouched({
+      nome: true,
+      endereco: true,
+      previsaoTermino: true,
+    });
+
+    if (Object.keys(newErrors).length > 0) {
+      console.log("Formulário com erros.");
+      return;
+    }
+
     if (isEditMode) {
       console.log('Dados da Obra para ATUALIZAR:', formData);
     } else {
@@ -48,6 +87,23 @@ const ObraForm = () => {
     navigate('/admin/general-registrations');
   };
 
+  const Label = ({ htmlFor, children, required }) => (
+    <label htmlFor={htmlFor} className="block text-sm font-medium text-gray-700 mb-1">
+      {children} {required && <span className="text-red-500">*</span>}
+    </label>
+  );
+
+  const inputStyle = (hasError) =>
+    `w-full h-10 px-4 py-2 text-base border rounded-lg focus:outline-none focus:ring-0 bg-white ${
+      hasError
+        ? "border-red-500"
+        : "border-[#DFEAF2] focus:border-[#03A650]"
+    }`;
+
+  const ErrorMessage = ({ children }) => (
+    <p className="text-xs text-red-500 mt-1">{children}</p>
+  );
+
   return (
     <AdminLayout pageTitle={isEditMode ? "Editar Obra" : "Cadastrar Obra"}>
       <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 w-full">
@@ -55,54 +111,52 @@ const ObraForm = () => {
           <h2 className="text-xl font-bold text-gray-800">{isEditMode ? "Editar Obra" : "Cadastro da Obra"}</h2>
         </div>
         
-        <form onSubmit={handleSubmit}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-            {/* Nome da Obra */}
+        <form onSubmit={handleSubmit} noValidate>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
             <div>
-              <label htmlFor="nome" className="block text-sm font-medium text-gray-700 mb-1">Nome da Obra</label>
-              <input type="text" name="nome" id="nome" value={formData.nome} onChange={handleChange} placeholder="Digite o nome da obra" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500" />
+              <Label htmlFor="nome" required>Nome da Obra</Label>
+              <Input type="text" name="nome" id="nome" value={formData.nome} onChange={handleChange} onBlur={handleBlur} placeholder="Digite o nome da obra" className={inputStyle(touched.nome && errors.nome)} />
+              {touched.nome && errors.nome && <ErrorMessage>{errors.nome}</ErrorMessage>}
             </div>
 
-            {/* Endereço */}
             <div>
-              <label htmlFor="endereco" className="block text-sm font-medium text-gray-700 mb-1">Endereço</label>
-              <input type="text" name="endereco" id="endereco" value={formData.endereco} onChange={handleChange} placeholder="Digite o endereço completo" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500" />
+              <Label htmlFor="endereco" required>Endereço</Label>
+              <Input type="text" name="endereco" id="endereco" value={formData.endereco} onChange={handleChange} onBlur={handleBlur} placeholder="Digite o endereço completo" className={inputStyle(touched.endereco && errors.endereco)} />
+              {touched.endereco && errors.endereco && <ErrorMessage>{errors.endereco}</ErrorMessage>}
             </div>
 
-            {/* Data de Início */}
             <div>
-              <label htmlFor="dataInicio" className="block text-sm font-medium text-gray-700 mb-1">Data de Início</label>
+              <Label htmlFor="dataInicio">Data de Início</Label>
               <InputMask
                 mask="99/99/9999"
                 value={formData.dataInicio}
                 onChange={handleChange}
                 name="dataInicio"
               >
-                {(inputProps) => <input {...inputProps} type="text" id="dataInicio" placeholder="__/__/____" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500" />}
+                {(inputProps) => <Input {...inputProps} type="text" id="dataInicio" placeholder="__/__/____" className={inputStyle(false)} />}
               </InputMask>
             </div>
 
-            {/* Previsão de Término */}
             <div>
-              <label htmlFor="previsaoTermino" className="block text-sm font-medium text-gray-700 mb-1">Previsão de Término</label>
+              <Label htmlFor="previsaoTermino" required>Previsão de Término</Label>
               <InputMask
                 mask="99/99/9999"
                 value={formData.previsaoTermino}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 name="previsaoTermino"
               >
-                {(inputProps) => <input {...inputProps} type="text" id="previsaoTermino" placeholder="__/__/____" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500" />}
+                {(inputProps) => <Input {...inputProps} type="text" id="previsaoTermino" placeholder="__/__/____" className={inputStyle(touched.previsaoTermino && errors.previsaoTermino)} />}
               </InputMask>
+              {touched.previsaoTermino && errors.previsaoTermino && <ErrorMessage>{errors.previsaoTermino}</ErrorMessage>}
             </div>
 
-            {/* Descrição */}
             <div className="md:col-span-2">
-              <label htmlFor="descricao" className="block text-sm font-medium text-gray-700 mb-1">Descrição</label>
-              <textarea name="descricao" id="descricao" value={formData.descricao} onChange={handleChange} rows="4" placeholder="Digite uma descrição (opcional)" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"></textarea>
+              <Label htmlFor="descricao">Descrição</Label>
+              <Textarea name="descricao" id="descricao" value={formData.descricao} onChange={handleChange} rows="4" placeholder="Digite uma descrição (opcional)" className={`${inputStyle(false)} h-auto`}></Textarea>
             </div>
           </div>
 
-          {/* Botões */}
           <div className="flex justify-end gap-4 mt-8">
             <Button type="button" variant="outline" onClick={() => navigate('/admin/general-registrations')} className="px-8 py-2 rounded-lg border-gray-300 text-gray-700 font-semibold hover:bg-gray-100">
               Cancelar

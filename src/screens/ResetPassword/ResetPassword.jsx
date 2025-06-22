@@ -2,131 +2,78 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthLayout from "../../components/layouts/AuthLayout";
 import { Button } from "../../components/ui/button";
-import FloatingLabelInput from "../../components/ui/FloatingLabelInput";
+import { Input } from "../../components/ui/input";
 
 const ResetPassword = () => {
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({ password: '', confirmPassword: '' });
-  const [errors, setErrors] = useState({});
-  const [touched, setTouched] = useState({});
 
-  const validate = () => {
-    const newErrors = {};
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{8,15}$/;
-
-    // Validação da Nova Senha
-    if (!formData.password) {
-      newErrors.password = "A senha é obrigatória.";
-    } else if (formData.password.length < 8 || formData.password.length > 15) {
-      newErrors.password = "A senha deve ter entre 8 e 15 caracteres.";
-    } else if (!passwordRegex.test(formData.password)) {
-      newErrors.password = "A senha deve conter letras e número.";
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      setError("As senhas não correspondem.");
+      return;
     }
-
-    // Validação da Confirmação de Senha
-    if (!formData.confirmPassword) {
-      newErrors.confirmPassword = "A confirmação de senha é obrigatória.";
-    } else if (formData.confirmPassword.length < 8 || formData.confirmPassword.length > 15) {
-      newErrors.confirmPassword = "A senha deve ter entre 8 e 15 caracteres.";
-    } else if (!passwordRegex.test(formData.confirmPassword)) {
-      newErrors.confirmPassword = "A senha deve conter letras e número.";
-    } else if (formData.password && formData.confirmPassword && formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = "As senhas não coincidem.";
+    if (password.length < 6) {
+      setError("A senha deve ter pelo menos 6 caracteres.");
+      return;
     }
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    setError("");
+    console.log("Nova senha:", password);
+    navigate("/password-reset-success");
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSave = () => {
-    if (validate()) {
-      console.log("Senha redefinida com sucesso");
-      navigate("/password-reset-success");
-    } else {
-      console.log("Falha na validação");
-    }
-  };
-
-  // Validação individual de campo
-  const validateField = (name, value) => {
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{8,15}$/;
-    let error = '';
-    if (name === 'password') {
-      if (!value) {
-        error = 'A senha é obrigatória.';
-      } else if (value.length < 8 || value.length > 15) {
-        error = 'A senha deve ter entre 8 e 15 caracteres.';
-      } else if (!passwordRegex.test(value)) {
-        error = 'A senha deve conter letras e número.';
-      }
-    }
-    if (name === 'confirmPassword') {
-      if (!value) {
-        error = 'A confirmação de senha é obrigatória.';
-      } else if (value.length < 8 || value.length > 15) {
-        error = 'A senha deve ter entre 8 e 15 caracteres.';
-      } else if (!passwordRegex.test(value)) {
-        error = 'A senha deve conter letras e número.';
-      } else if (formData.password && value && formData.password !== value) {
-        error = 'As senhas não coincidem.';
-      }
-    }
-    setErrors((prev) => ({ ...prev, [name]: error }));
-  };
-
-  const handleBlur = (e) => {
-    const { name, value } = e.target;
-    setTouched((prev) => ({ ...prev, [name]: true }));
-    validateField(name, value);
-  };
+  const inputStyle = "w-full h-10 px-4 py-2 text-base border border-[#DFEAF2] rounded-lg focus:outline-none focus:ring-0 focus:border-[#03A650]";
 
   return (
-    <AuthLayout>
-      <div className="text-center space-y-8">
+    <AuthLayout
+      title="Redefinir Senha"
+      subtitle="Crie uma nova senha para sua conta."
+    >
+      <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <h2 className="text-2xl font-bold text-[#03a650] font-['Poppins',Helvetica]">
+          <label
+            htmlFor="password"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
             Nova Senha
-          </h2>
-          <p className="text-gray-600 mt-2">
-            Digite a sua nova senha.
-          </p>
-        </div>
-
-        <div className="space-y-6">
-          <FloatingLabelInput
+          </label>
+          <Input
+            id="password"
             type="password"
-            label="Senha"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={!!errors.password && touched.password}
-            helperText={touched.password ? errors.password : ''}
-          />
-          <FloatingLabelInput
-            type="password"
-            label="Confirme sua Senha"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={!!errors.confirmPassword && touched.confirmPassword}
-            helperText={touched.confirmPassword ? errors.confirmPassword : ''}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            className={inputStyle}
+            placeholder="Digite sua nova senha"
           />
         </div>
+        <div>
+          <label
+            htmlFor="confirmPassword"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Confirmar Nova Senha
+          </label>
+          <Input
+            id="confirmPassword"
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+            className={inputStyle}
+            placeholder="Confirme sua nova senha"
+          />
+        </div>
+        
+        {error && <p className="text-sm text-red-500">{error}</p>}
 
-        <Button
-          onClick={handleSave}
-          className="w-full h-[47px] bg-[#04bf45] hover:bg-[#03a650] rounded-lg text-xl font-['Poppins',Helvetica]"
-        >
-          Salvar
+        <Button type="submit" className="w-full">
+          Redefinir Senha
         </Button>
-      </div>
+      </form>
     </AuthLayout>
   );
 };

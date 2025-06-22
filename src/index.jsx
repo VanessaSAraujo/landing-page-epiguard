@@ -17,6 +17,7 @@ import UserForm from "./screens/Dashboard/Admin/UserForm";
 import GeneralRegistrations from "./screens/Dashboard/Admin/GeneralRegistrations";
 import ObraForm from "./screens/Dashboard/Admin/ObraForm";
 import SetorForm from "./screens/Dashboard/Admin/SetorForm";
+import Settings from "./screens/Dashboard/Admin/Settings";
 
 createRoot(document.getElementById("app")).render(
   <StrictMode>
@@ -42,6 +43,7 @@ createRoot(document.getElementById("app")).render(
         <Route path="/admin/general-registrations/obra/:id/edit" element={<ObraForm />} />
         <Route path="/admin/general-registrations/setor/new" element={<SetorForm />} />
         <Route path="/admin/general-registrations/setor/:id/edit" element={<SetorForm />} />
+        <Route path="/admin/settings" element={<Settings />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
