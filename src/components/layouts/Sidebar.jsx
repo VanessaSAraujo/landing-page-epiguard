@@ -17,26 +17,45 @@ import { Link, useLocation } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import simbolo from '../../assets/Simbolo.png';
 import userIcon from '../../assets/user_icon.png';
+import { useAuth } from '../../AuthContext';
 
-const Sidebar = ({ isCollapsed, toggleSidebar, user, sidebarOpen, closeSidebar }) => {
+const Sidebar = ({ isCollapsed, toggleSidebar, sidebarOpen, closeSidebar }) => {
+  const { user } = useAuth();
   const location = useLocation();
 
-  const menuItems = [
-    { icon: LayoutDashboard, text: 'Dashboard', path: '/admin' },
+  // Definição dos menus para admin e técnico
+  const adminMenuItems = [
+    { icon: LayoutDashboard, text: 'Dashboard', path: '/admin/dashboard' },
     { icon: Camera, text: 'Câmeras', path: '/admin/cameras' },
     { icon: FileText, text: 'Relatórios', path: '/admin/reports' },
     { icon: Users, text: 'Usuários', path: '/admin/users' },
     { icon: Archive, text: 'Cadastros Gerais', path: '/admin/general-registrations' },
   ];
 
-  const bottomMenuItems = [
+  const tecnicoMenuItems = [
+    { icon: LayoutDashboard, text: 'Dashboard', path: '/user/dashboard' },
+    { icon: Camera, text: 'Câmeras', path: '/user/cameras' },
+    { icon: FileText, text: 'Relatórios', path: '/user/reports' },
+  ];
+
+  const adminBottomMenuItems = [
     { icon: Settings, text: 'Configurações', path: '/admin/settings' },
     { icon: LifeBuoy, text: 'Suporte', path: '/admin/support' },
   ];
 
+  const tecnicoBottomMenuItems = [
+    { icon: Settings, text: 'Configurações', path: '/user/settings' },
+    { icon: LifeBuoy, text: 'Suporte', path: '/user/support' },
+  ];
+
+  // Escolhe os menus conforme o perfil
+  const isTecnico = user?.role === 'tecnico';
+  const menuItems = isTecnico ? tecnicoMenuItems : adminMenuItems;
+  const bottomMenuItems = isTecnico ? tecnicoBottomMenuItems : adminBottomMenuItems;
+
   const isActive = (path) => {
-    if (path === '/admin') {
-      return location.pathname === '/admin';
+    if (path === '/admin/dashboard') {
+      return location.pathname === '/admin/dashboard';
     }
     return location.pathname.startsWith(path);
   };

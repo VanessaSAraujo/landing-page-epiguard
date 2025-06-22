@@ -1,47 +1,46 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../AuthContext';
+import camerasData from '../../../data/camerasData';
 import AdminLayout from '../../../components/layouts/AdminLayout';
-import { Button } from '../../../components/ui/button';
-import { cameras as initialCameras } from '../../../data/camerasData';
 import StatusBadge from '../../../components/ui/StatusBadge';
 import DropdownFilter from '../../../components/ui/DropdownFilter';
-import ConfirmationModal from '../../../components/ui/ConfirmationModal';
-import { Search, Eye, Trash2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
-const Cameras = () => {
-  const [filters, setFilters] = useState({ obra: [], setor: [], status: [] });
+const UserCameras = () => {
+  const { user } = useAuth();
+  const obra = user?.obraVinculada;
+  const navigate = useNavigate();
+
+  // Filtra as câmeras da obra vinculada
+  const camerasObra = camerasData.filter(cam => cam.obra === obra);
+
+  const [filters, setFilters] = useState({ setor: [], status: [] });
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [allCameras, setAllCameras] = useState(initialCameras);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [cameraToDelete, setCameraToDelete] = useState(null);
   const itemsPerPage = 8;
 
   const filterOptions = useMemo(() => {
-    const obras = [...new Set(allCameras.map((c) => c.obra))];
-    const setores = [...new Set(allCameras.map((c) => c.setor))];
-    const statuses = [...new Set(allCameras.map((c) => c.status))];
-    return { obras, setores, statuses };
-  }, [allCameras]);
+    const setores = [...new Set(camerasObra.map((c) => c.setor))];
+    const statuses = [...new Set(camerasObra.map((c) => c.status))];
+    return { setores, statuses };
+  }, [camerasObra]);
 
   const filteredItems = useMemo(() => {
     const lowerCaseSearchTerm = searchTerm.toLowerCase();
-    return allCameras
+    return camerasObra
       .filter(
         (camera) =>
-          (filters.obra.length === 0 || filters.obra.includes(camera.obra)) &&
           (filters.setor.length === 0 || filters.setor.includes(camera.setor)) &&
           (filters.status.length === 0 || filters.status.includes(camera.status))
       )
       .filter((camera) =>
         !searchTerm ||
         camera.nome.toLowerCase().includes(lowerCaseSearchTerm) ||
-        camera.obra.toLowerCase().includes(lowerCaseSearchTerm) ||
         camera.setor.toLowerCase().includes(lowerCaseSearchTerm)
       );
-  }, [filters, searchTerm, allCameras]);
-  
-  // Reset page to 1 when filters or search term change
+  }, [filters, searchTerm, camerasObra]);
+
   useEffect(() => {
     setCurrentPage(1);
   }, [filters, searchTerm]);
@@ -57,35 +56,18 @@ const Cameras = () => {
 
   const handleFilterChange = (filterName, value) => {
     setFilters(prev => {
-        const currentFilterValues = prev[filterName];
-        const newFilterValues = currentFilterValues.includes(value)
-            ? currentFilterValues.filter(v => v !== value)
-            : [...currentFilterValues, value];
-        return { ...prev, [filterName]: newFilterValues };
+      const currentFilterValues = prev[filterName];
+      const newFilterValues = currentFilterValues.includes(value)
+        ? currentFilterValues.filter(v => v !== value)
+        : [...currentFilterValues, value];
+      return { ...prev, [filterName]: newFilterValues };
     });
   };
-  
+
   const handlePageChange = (page) => {
     if (page > 0 && page <= totalPages) {
       setCurrentPage(page);
     }
-  };
-
-  const handleDeleteClick = (camera) => {
-    setCameraToDelete(camera);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setCameraToDelete(null);
-  };
-
-  const handleConfirmDelete = () => {
-    if (cameraToDelete) {
-      setAllCameras(prevCameras => prevCameras.filter(c => c.id !== cameraToDelete.id));
-    }
-    handleCloseModal();
   };
 
   const getPaginationButtons = () => {
@@ -95,7 +77,6 @@ const Cameras = () => {
         {page}
       </button>
     );
-
     if (totalPages <= 7) {
       for (let i = 1; i <= totalPages; i++) buttons.push(createPageButton(i));
     } else if (currentPage <= 4) {
@@ -119,17 +100,14 @@ const Cameras = () => {
   };
 
   return (
-    <AdminLayout pageTitle="Câmeras">
+    <AdminLayout pageTitle={`Câmeras - ${obra}`}>
       <div className="bg-[#f9fafb] p-4 md:p-8 rounded-2xl shadow-lg border border-gray-200">
         {/* Título da tabela */}
         <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6 gap-4">
           <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-2 md:mb-0">Câmeras Cadastradas</h2>
           <div className="flex items-center gap-4">
-            <Button asChild className="bg-green-600 hover:bg-green-700 text-white font-semibold">
-              <Link to="/admin/cameras/new">Cadastrar Câmera</Link>
-            </Button>
+            {/* Sem botão de cadastro para técnico */}
             <div className="flex items-center gap-2">
-              <DropdownFilter label="Obras" options={filterOptions.obras} selected={filters.obra} onSelect={(value) => handleFilterChange('obra', value)} />
               <DropdownFilter label="Setor" options={filterOptions.setores} selected={filters.setor} onSelect={(value) => handleFilterChange('setor', value)} />
               <DropdownFilter label="Status" options={filterOptions.statuses} selected={filters.status} onSelect={(value) => handleFilterChange('status', value)} />
             </div>
@@ -137,7 +115,7 @@ const Cameras = () => {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input 
                 type="text" 
-                placeholder="Busque por obra, setor ou nome da câmera" 
+                placeholder="Busque por setor ou nome da câmera" 
                 className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -148,7 +126,7 @@ const Cameras = () => {
 
         {/* Tabela */}
         <div className="overflow-x-auto w-full">
-          <table className="min-w-[1010px] w-full divide-y divide-gray-200">
+          <table className="min-w-[900px] w-full divide-y divide-gray-200">
             <thead className="bg-[#f3f4f6]">
               <tr>
                 {['Obra', 'Setor', 'Nome da Câmera', 'Status', 'Última Atividade', 'Ações'].map((header) => (
@@ -169,17 +147,20 @@ const Cameras = () => {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{camera.ultimaAtividade}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                    <div className="flex items-center gap-3">
-                      <Link to={`/admin/cameras/${camera.id}`} className="text-blue-600 hover:text-blue-800" title="Ver detalhes">
-                        <Eye className="w-5 h-5" />
-                      </Link>
-                      <button className="text-red-600 hover:text-red-800" onClick={() => handleDeleteClick(camera)}>
-                        <Trash2 className="w-5 h-5" />
-                      </button>
-                    </div>
+                    <button
+                      className="text-blue-600 hover:text-blue-800 flex items-center gap-1"
+                      title="Ver detalhes"
+                      onClick={() => navigate(`/user/cameras/${camera.id}`)}
+                    >
+                      <Eye className="w-5 h-5" />
+                      <span className="hidden md:inline">Detalhes</span>
+                    </button>
                   </td>
                 </tr>
               ))}
+              {currentItems.length === 0 && (
+                <tr><td colSpan={6} className="text-center text-gray-400 py-8">Nenhuma câmera cadastrada para esta obra.</td></tr>
+              )}
             </tbody>
           </table>
         </div>
@@ -200,16 +181,8 @@ const Cameras = () => {
           </div>
         </div>
       </div>
-      <ConfirmationModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        onConfirm={handleConfirmDelete}
-        title="Deseja excluir?"
-        confirmText="Excluir"
-        cancelText="Cancelar"
-      />
     </AdminLayout>
   );
 };
 
-export default Cameras; 
+export default UserCameras; 

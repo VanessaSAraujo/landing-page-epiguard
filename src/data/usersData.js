@@ -6,6 +6,8 @@ const usersData = [
     email: 'joao.silva@empresa.com',
     status: 'Conectado',
     ultimoAcesso: '20/04/2025 14:33',
+    role: 'admin',
+    obraVinculada: null,
   },
   {
     id: 2,
@@ -14,6 +16,8 @@ const usersData = [
     email: 'maria.lima@empresa.com',
     status: 'Desativado',
     ultimoAcesso: '19/01/2025 16:10',
+    role: 'tecnico',
+    obraVinculada: 'Beta',
   },
   {
     id: 3,
@@ -22,6 +26,8 @@ const usersData = [
     email: 'carlos.s02@empresa.com',
     status: 'Conectado',
     ultimoAcesso: '20/04/2025 14:35',
+    role: 'tecnico',
+    obraVinculada: 'Obra B',
   },
   {
     id: 4,
@@ -30,6 +36,8 @@ const usersData = [
     email: 'fernanda.r@empresa.com',
     status: 'Conectado',
     ultimoAcesso: '20/04/2025 14:38',
+    role: 'tecnico',
+    obraVinculada: 'Alpha',
   },
   {
     id: 5,
@@ -38,6 +46,8 @@ const usersData = [
     email: 'diego.m@empresa.com',
     status: 'Conectado',
     ultimoAcesso: '20/04/2025 14:30',
+    role: 'admin',
+    obraVinculada: null,
   },
   {
     id: 6,
@@ -46,6 +56,8 @@ const usersData = [
     email: 'paula.f@empresa.com',
     status: 'Desconectado',
     ultimoAcesso: '20/04/2025 08:00',
+    role: 'tecnico',
+    obraVinculada: 'Obra B',
   },
   {
     id: 7,
@@ -54,6 +66,8 @@ const usersData = [
     email: 'lucas.o@empresa.com',
     status: 'Conectado',
     ultimoAcesso: '20/04/2025 14:40',
+    role: 'tecnico',
+    obraVinculada: 'Alpha',
   },
   {
     id: 8,
@@ -62,6 +76,8 @@ const usersData = [
     email: 'renata.c@empresa.com',
     status: 'Conectado',
     ultimoAcesso: '20/04/2025 14:42',
+    role: 'tecnico',
+    obraVinculada: 'Beta',
   },
    {
     id: 9,
@@ -70,6 +86,8 @@ const usersData = [
     email: 'andre.c@empresa.com',
     status: 'Conectado',
     ultimoAcesso: '21/04/2025 09:00',
+    role: 'tecnico',
+    obraVinculada: 'Gama',
   },
   {
     id: 10,
@@ -78,6 +96,8 @@ const usersData = [
     email: 'beatriz.a@empresa.com',
     status: 'Desativado',
     ultimoAcesso: '18/03/2025 11:45',
+    role: 'tecnico',
+    obraVinculada: 'Delta',
   },
 ];
 

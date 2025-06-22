@@ -29,4 +29,6 @@ export const cameras = Array.from({ length: 96 }, (_, i) => {
       minute: '2-digit',
     }).replace(',', ''),
   };
-}); 
+});
+
+export default cameras; 

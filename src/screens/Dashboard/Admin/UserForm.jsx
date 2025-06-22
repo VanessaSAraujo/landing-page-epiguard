@@ -123,10 +123,12 @@ const UserForm = () => {
         return;
     }
 
+    const userToSave = { ...formData, role: 'tecnico' };
+
     if (isEditMode) {
-      console.log('Dados do formulário para ATUALIZAR:', { ...formData, id });
+      console.log('Dados do formulário para ATUALIZAR:', { ...userToSave, id });
     } else {
-      console.log('Dados do formulário para SALVAR:', formData);
+      console.log('Dados do formulário para SALVAR:', userToSave);
     }
     navigate('/admin/users');
   };

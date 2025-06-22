@@ -336,34 +336,50 @@
       }
     },
     {
-      "id": "src\\screens\\Dashboard\\Admin\\CameraForm.jsx:72:6-to-src\\screens\\Dashboard\\Admin\\Cameras.jsx",
+      "id": "src\\screens\\Dashboard\\Admin\\CameraForm.jsx:89:4-to-src\\screens\\Dashboard\\Admin\\Cameras.jsx",
       "source": "src\\screens\\Dashboard\\Admin\\CameraForm.jsx",
       "target": "src\\screens\\Dashboard\\Admin\\Cameras.jsx",
       "data": {
         "viaRoute": "/admin/cameras",
         "trigger": {
           "element": "navigate('/admin/cameras')",
-          "line": 72,
-          "endLine": 72,
-          "column": 6,
-          "endColumn": 32,
+          "line": 89,
+          "endLine": 89,
+          "column": 4,
+          "endColumn": 30,
           "sourceFile": "src\\screens\\Dashboard\\Admin\\CameraForm.jsx"
         }
       }
     },
     {
-      "id": "src\\screens\\Dashboard\\Admin\\CameraForm.jsx:199:69-to-src\\screens\\Dashboard\\Admin\\Cameras.jsx",
-      "source": "src\\screens\\Dashboard\\Admin\\CameraForm.jsx",
-      "target": "src\\screens\\Dashboard\\Admin\\Cameras.jsx",
+      "id": "src\\components\\layouts\\Sidebar.jsx:108:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
       "data": {
-        "viaRoute": "/admin/cameras",
+        "viaRoute": "/login",
         "trigger": {
-          "element": "navigate('/admin/cameras')",
-          "line": 199,
-          "endLine": 199,
-          "column": 69,
-          "endColumn": 95,
-          "sourceFile": "src\\screens\\Dashboard\\Admin\\CameraForm.jsx"
+          "element": "<Link\r\n            to=\"/login\"\r\n            className={`flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\r\n            ${isCollapsed ? 'justify-center' : ''}`}\r\n          >\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            {!isCollapsed && <span className=\"ml-4 font-semibold\">Sair</span>}\r\n          </Link>",
+          "line": 108,
+          "endLine": 115,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\components\\layouts\\Sidebar.jsx:162:10-to-src\\screens\\ElementLogin\\Login.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\AdminDashboard.jsx",
+      "target": "src\\screens\\ElementLogin\\Login.jsx",
+      "data": {
+        "viaRoute": "/login",
+        "trigger": {
+          "element": "<Link to=\"/login\"\r\n            className=\"flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100\">\r\n            <LogOut className=\"w-6 h-6 flex-shrink-0\" />\r\n            <span className=\"ml-4 font-semibold\">Sair</span>\r\n          </Link>",
+          "line": 162,
+          "endLine": 166,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src\\components\\layouts\\Sidebar.jsx"
         }
       }
     },
@@ -560,15 +576,15 @@
       }
     },
     {
-      "id": "src\\screens\\Dashboard\\Admin\\UserForm.jsx:81:4-to-src\\screens\\Dashboard\\Admin\\Users.jsx",
+      "id": "src\\screens\\Dashboard\\Admin\\UserForm.jsx:131:4-to-src\\screens\\Dashboard\\Admin\\Users.jsx",
       "source": "src\\screens\\Dashboard\\Admin\\UserForm.jsx",
       "target": "src\\screens\\Dashboard\\Admin\\Users.jsx",
       "data": {
         "viaRoute": "/admin/users",
         "trigger": {
           "element": "navigate('/admin/users')",
-          "line": 81,
-          "endLine": 81,
+          "line": 131,
+          "endLine": 131,
           "column": 4,
           "endColumn": 28,
           "sourceFile": "src\\screens\\Dashboard\\Admin\\UserForm.jsx"
@@ -576,15 +592,15 @@
       }
     },
     {
-      "id": "src\\screens\\Dashboard\\Admin\\UserForm.jsx:211:67-to-src\\screens\\Dashboard\\Admin\\Users.jsx",
+      "id": "src\\screens\\Dashboard\\Admin\\UserForm.jsx:284:67-to-src\\screens\\Dashboard\\Admin\\Users.jsx",
       "source": "src\\screens\\Dashboard\\Admin\\UserForm.jsx",
       "target": "src\\screens\\Dashboard\\Admin\\Users.jsx",
       "data": {
         "viaRoute": "/admin/users",
         "trigger": {
           "element": "navigate('/admin/users')",
-          "line": 211,
-          "endLine": 211,
+          "line": 284,
+          "endLine": 284,
           "column": 67,
           "endColumn": 91,
           "sourceFile": "src\\screens\\Dashboard\\Admin\\UserForm.jsx"
@@ -688,15 +704,15 @@
       }
     },
     {
-      "id": "src\\screens\\Dashboard\\Admin\\ObraForm.jsx:48:4-to-src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
+      "id": "src\\screens\\Dashboard\\Admin\\ObraForm.jsx:87:4-to-src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
       "source": "src\\screens\\Dashboard\\Admin\\ObraForm.jsx",
       "target": "src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
       "data": {
         "viaRoute": "/admin/general-registrations",
         "trigger": {
           "element": "navigate('/admin/general-registrations')",
-          "line": 48,
-          "endLine": 48,
+          "line": 87,
+          "endLine": 87,
           "column": 4,
           "endColumn": 44,
           "sourceFile": "src\\screens\\Dashboard\\Admin\\ObraForm.jsx"
@@ -704,15 +720,15 @@
       }
     },
     {
-      "id": "src\\screens\\Dashboard\\Admin\\ObraForm.jsx:103:67-to-src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
+      "id": "src\\screens\\Dashboard\\Admin\\ObraForm.jsx:161:67-to-src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
       "source": "src\\screens\\Dashboard\\Admin\\ObraForm.jsx",
       "target": "src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
       "data": {
         "viaRoute": "/admin/general-registrations",
         "trigger": {
           "element": "navigate('/admin/general-registrations')",
-          "line": 103,
-          "endLine": 103,
+          "line": 161,
+          "endLine": 161,
           "column": 67,
           "endColumn": 107,
           "sourceFile": "src\\screens\\Dashboard\\Admin\\ObraForm.jsx"

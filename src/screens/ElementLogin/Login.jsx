@@ -1,17 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import AuthLayout from "../../components/layouts/AuthLayout";
+import usersData from "../../data/usersData";
+import { useAuth } from "../../AuthContext";
 
 export const Login = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
+  const [form, setForm] = useState({ email: '', password: '' });
+  const [error, setError] = useState('');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Lógica de login aqui
-    // Exemplo: navegar para o dashboard do admin em caso de sucesso
-    navigate('/admin/dashboard');
+    // Busca usuário pelo e-mail (mock, sem senha)
+    const user = usersData.find(u => u.email === form.email);
+    if (!user) {
+      setError('Usuário ou senha inválidos.');
+      return;
+    }
+    login(user);
+    if (user.role === 'admin') {
+      navigate('/admin/dashboard');
+    } else {
+      navigate('/user/dashboard');
+    }
   };
 
   const inputStyle = "w-full h-10 px-4 py-2 text-base border border-[#DFEAF2] rounded-lg focus:outline-none focus:ring-0 focus:border-[#03A650]";
@@ -31,10 +50,13 @@ export const Login = () => {
           </label>
           <Input 
             id="email" 
+            name="email"
             type="email" 
             required 
             className={inputStyle} 
             placeholder="seuemail@exemplo.com"
+            value={form.email}
+            onChange={handleChange}
           />
         </div>
 
@@ -47,12 +69,17 @@ export const Login = () => {
           </label>
           <Input 
             id="password" 
+            name="password"
             type="password" 
             required 
             className={inputStyle}
             placeholder="********"
+            value={form.password}
+            onChange={handleChange}
           />
         </div>
+
+        {error && <p className="text-red-500 text-sm">{error}</p>}
 
         <div className="flex items-center justify-between">
           <div className="flex items-center">
