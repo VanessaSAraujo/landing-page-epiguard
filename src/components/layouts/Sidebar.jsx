@@ -40,12 +40,10 @@ const Sidebar = ({ isCollapsed, toggleSidebar, sidebarOpen, closeSidebar }) => {
 
   const adminBottomMenuItems = [
     { icon: Settings, text: 'Configurações', path: '/admin/settings' },
-    { icon: LifeBuoy, text: 'Suporte', path: '/admin/support' },
   ];
 
   const tecnicoBottomMenuItems = [
     { icon: Settings, text: 'Configurações', path: '/user/settings' },
-    { icon: LifeBuoy, text: 'Suporte', path: '/user/support' },
   ];
 
   // Escolhe os menus conforme o perfil
@@ -95,6 +93,17 @@ const Sidebar = ({ isCollapsed, toggleSidebar, sidebarOpen, closeSidebar }) => {
           {(!isCollapsed || isMobile) && <span className="ml-4 truncate">{item.text}</span>}
         </Link>
       ))}
+      {/* Suporte via WhatsApp */}
+      <a
+        href="https://wa.me/5575982802992"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`flex items-center p-3 my-1 rounded-lg transition-colors text-gray-600 hover:bg-gray-100 hover:text-gray-900 ${isCollapsed && !isMobile ? 'justify-center' : ''}`}
+        onClick={isMobile ? closeSidebar : undefined}
+      >
+        <LifeBuoy className="w-6 h-6 flex-shrink-0" />
+        {(!isCollapsed || isMobile) && <span className="ml-4 truncate">Suporte</span>}
+      </a>
     </>
   );
 
