@@ -79,6 +79,44 @@
       "routes": [
         "/admin/reports"
       ]
+    },
+    {
+      "id": "src/screens/Dashboard/Admin/Users.jsx",
+      "label": "Users",
+      "routes": [
+        "/admin/users"
+      ]
+    },
+    {
+      "id": "src/screens/Dashboard/Admin/UserForm.jsx",
+      "label": "UserForm",
+      "routes": [
+        "/admin/users/new",
+        "/admin/users/:id/edit"
+      ]
+    },
+    {
+      "id": "src/screens/Dashboard/Admin/GeneralRegistrations.jsx",
+      "label": "GeneralRegistrations",
+      "routes": [
+        "/admin/general-registrations"
+      ]
+    },
+    {
+      "id": "src/screens/Dashboard/Admin/ObraForm.jsx",
+      "label": "ObraForm",
+      "routes": [
+        "/admin/general-registrations/obra/new",
+        "/admin/general-registrations/obra/:id/edit"
+      ]
+    },
+    {
+      "id": "src/screens/Dashboard/Admin/SetorForm.jsx",
+      "label": "SetorForm",
+      "routes": [
+        "/admin/general-registrations/setor/new",
+        "/admin/general-registrations/setor/:id/edit"
+      ]
     }
   ],
   "edges": [
@@ -287,6 +325,150 @@
           "column": 27,
           "endColumn": 53,
           "sourceFile": "src\\screens\\Dashboard\\Admin\\CameraDetail.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\screens\\Dashboard\\Admin\\Users.jsx:103:16-to-src\\screens\\Dashboard\\Admin\\UserForm.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\Users.jsx",
+      "target": "src\\screens\\Dashboard\\Admin\\UserForm.jsx",
+      "data": {
+        "viaRoute": "/admin/users/new",
+        "trigger": {
+          "element": "<Link to=\"/admin/users/new\">\r\n                  Cadastrar Usuário\r\n                </Link>",
+          "line": 103,
+          "endLine": 105,
+          "column": 16,
+          "endColumn": 23,
+          "sourceFile": "src\\screens\\Dashboard\\Admin\\Users.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\screens\\Dashboard\\Admin\\UserForm.jsx:81:4-to-src\\screens\\Dashboard\\Admin\\Users.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\UserForm.jsx",
+      "target": "src\\screens\\Dashboard\\Admin\\Users.jsx",
+      "data": {
+        "viaRoute": "/admin/users",
+        "trigger": {
+          "element": "navigate('/admin/users')",
+          "line": 81,
+          "endLine": 81,
+          "column": 4,
+          "endColumn": 28,
+          "sourceFile": "src\\screens\\Dashboard\\Admin\\UserForm.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\screens\\Dashboard\\Admin\\UserForm.jsx:209:67-to-src\\screens\\Dashboard\\Admin\\Users.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\UserForm.jsx",
+      "target": "src\\screens\\Dashboard\\Admin\\Users.jsx",
+      "data": {
+        "viaRoute": "/admin/users",
+        "trigger": {
+          "element": "navigate('/admin/users')",
+          "line": 209,
+          "endLine": 209,
+          "column": 67,
+          "endColumn": 91,
+          "sourceFile": "src\\screens\\Dashboard\\Admin\\UserForm.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx:65:10-to-src\\screens\\Dashboard\\Admin\\ObraForm.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
+      "target": "src\\screens\\Dashboard\\Admin\\ObraForm.jsx",
+      "data": {
+        "viaRoute": "/admin/general-registrations/obra/new",
+        "trigger": {
+          "element": "<Link to=\"/admin/general-registrations/obra/new\">Cadastrar Obra</Link>",
+          "line": 65,
+          "endLine": 65,
+          "column": 10,
+          "endColumn": 80,
+          "sourceFile": "src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx:104:10-to-src\\screens\\Dashboard\\Admin\\SetorForm.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
+      "target": "src\\screens\\Dashboard\\Admin\\SetorForm.jsx",
+      "data": {
+        "viaRoute": "/admin/general-registrations/setor/new",
+        "trigger": {
+          "element": "<Link to=\"/admin/general-registrations/setor/new\">Cadastrar Setor</Link>",
+          "line": 104,
+          "endLine": 104,
+          "column": 10,
+          "endColumn": 82,
+          "sourceFile": "src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\screens\\Dashboard\\Admin\\ObraForm.jsx:48:4-to-src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\ObraForm.jsx",
+      "target": "src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
+      "data": {
+        "viaRoute": "/admin/general-registrations",
+        "trigger": {
+          "element": "navigate('/admin/general-registrations')",
+          "line": 48,
+          "endLine": 48,
+          "column": 4,
+          "endColumn": 44,
+          "sourceFile": "src\\screens\\Dashboard\\Admin\\ObraForm.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\screens\\Dashboard\\Admin\\ObraForm.jsx:107:67-to-src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\ObraForm.jsx",
+      "target": "src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
+      "data": {
+        "viaRoute": "/admin/general-registrations",
+        "trigger": {
+          "element": "navigate('/admin/general-registrations')",
+          "line": 107,
+          "endLine": 107,
+          "column": 67,
+          "endColumn": 107,
+          "sourceFile": "src\\screens\\Dashboard\\Admin\\ObraForm.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\screens\\Dashboard\\Admin\\SetorForm.jsx:47:4-to-src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\SetorForm.jsx",
+      "target": "src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
+      "data": {
+        "viaRoute": "/admin/general-registrations",
+        "trigger": {
+          "element": "navigate('/admin/general-registrations')",
+          "line": 47,
+          "endLine": 47,
+          "column": 4,
+          "endColumn": 44,
+          "sourceFile": "src\\screens\\Dashboard\\Admin\\SetorForm.jsx"
+        }
+      }
+    },
+    {
+      "id": "src\\screens\\Dashboard\\Admin\\SetorForm.jsx:83:67-to-src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
+      "source": "src\\screens\\Dashboard\\Admin\\SetorForm.jsx",
+      "target": "src\\screens\\Dashboard\\Admin\\GeneralRegistrations.jsx",
+      "data": {
+        "viaRoute": "/admin/general-registrations",
+        "trigger": {
+          "element": "navigate('/admin/general-registrations')",
+          "line": 83,
+          "endLine": 83,
+          "column": 67,
+          "endColumn": 107,
+          "sourceFile": "src\\screens\\Dashboard\\Admin\\SetorForm.jsx"
         }
       }
     }

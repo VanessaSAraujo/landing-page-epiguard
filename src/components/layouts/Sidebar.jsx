@@ -104,31 +104,31 @@ const Sidebar = ({ isCollapsed, toggleSidebar, user, sidebarOpen, closeSidebar }
           {renderMenuItems(false)}
         </nav>
 
-        <div className="p-3 border-t border-gray-200">
-           <Link to="/profile">
-              <div className="flex items-center p-2 rounded-lg hover:bg-gray-100">
-                  <img
-                    src={user?.avatarUrl || userIcon}
-                    alt={user?.name || 'User'}
-                    className="w-10 h-10 rounded-full object-cover"
-                  />
-                  {!isCollapsed && (
-                      <div className="ml-3">
-                          <p className="text-sm font-semibold text-gray-800">{user?.name || 'Usuário'}</p>
-                          <p className="text-xs text-gray-500">Ver Perfil</p>
-                      </div>
-                  )}
-              </div>
-          </Link>
-
+        <div className="px-3 py-2">
           <Link
-            to="/logout"
-            className={`flex items-center w-full mt-2 p-3 rounded-lg text-red-500 hover:bg-red-50
+            to="/login"
+            className={`flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100
             ${isCollapsed ? 'justify-center' : ''}`}
           >
             <LogOut className="w-6 h-6 flex-shrink-0" />
             {!isCollapsed && <span className="ml-4 font-semibold">Sair</span>}
           </Link>
+        </div>
+
+        <div className="p-3 border-t border-gray-200">
+           <div className="flex items-center p-2 rounded-lg mt-2">
+              <img
+                src={user?.avatarUrl || userIcon}
+                alt={user?.name || 'User'}
+                className="w-10 h-10 rounded-full object-cover"
+              />
+              {!isCollapsed && (
+                  <div className="ml-3">
+                      <p className="text-xs text-gray-500">Olá,</p>
+                      <p className="text-sm font-semibold text-gray-800">{user?.name || 'Fulano'}</p>
+                  </div>
+              )}
+          </div>
         </div>
       </aside>
 
@@ -157,12 +157,29 @@ const Sidebar = ({ isCollapsed, toggleSidebar, user, sidebarOpen, closeSidebar }
         <nav className="flex-1 px-3 py-4">
           {renderMenuItems(true)}
         </nav>
-        <div className="p-3 border-t border-gray-200">
-          <Link to="/logout"
-            className="flex items-center w-full p-3 rounded-lg text-red-500 hover:bg-red-50">
+
+        <div className="px-3 py-2">
+          <Link to="/login"
+            className="flex items-center w-full p-3 rounded-lg text-gray-600 hover:bg-gray-100">
             <LogOut className="w-6 h-6 flex-shrink-0" />
             <span className="ml-4 font-semibold">Sair</span>
           </Link>
+        </div>
+        
+        <div className="p-3 border-t border-gray-200">
+          <div className="flex items-center p-2 rounded-lg mt-2">
+            <div className="flex items-center p-2 rounded-lg">
+                <img
+                  src={user?.avatarUrl || userIcon}
+                  alt={user?.name || 'User'}
+                  className="w-10 h-10 rounded-full object-cover"
+                />
+                <div className="ml-3">
+                    <p className="text-xs text-gray-500">Olá,</p>
+                    <p className="text-sm font-semibold text-gray-800">{user?.name || 'Fulano'}</p>
+                </div>
+            </div>
+          </div>
         </div>
       </aside>
     </>
