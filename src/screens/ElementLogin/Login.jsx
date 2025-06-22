@@ -11,14 +11,45 @@ export const Login = () => {
   const { login } = useAuth();
   const [form, setForm] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+
+  const validateEmail = (email) => {
+    if (!email) return 'E-mail é obrigatório.';
+    // Regex simples para e-mail
+    const re = /^\S+@\S+\.\S+$/;
+    if (!re.test(email)) return 'E-mail inválido.';
+    return '';
+  };
+
+  const validatePassword = (password) => {
+    if (!password) return 'Senha é obrigatória.';
+    if (password.length < 8) return 'A senha deve ter pelo menos 8 caracteres.';
+    if (password.length > 15) return 'A senha deve ter no máximo 15 caracteres.';
+    if (!/[a-zA-Z]/.test(password) || !/\d/.test(password)) return 'A senha deve conter letras e números.';
+    return '';
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
+    if (name === 'email') setEmailError(validateEmail(value));
+    if (name === 'password') setPasswordError(validatePassword(value));
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    if (name === 'email') setEmailError(validateEmail(value));
+    if (name === 'password') setPasswordError(validatePassword(value));
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
+    const emailErr = validateEmail(form.email);
+    const passErr = validatePassword(form.password);
+    setEmailError(emailErr);
+    setPasswordError(passErr);
+    if (emailErr || passErr) return;
     // Busca usuário pelo e-mail (mock, sem senha)
     const user = usersData.find(u => u.email === form.email);
     if (!user) {
@@ -53,11 +84,13 @@ export const Login = () => {
             name="email"
             type="email" 
             required 
-            className={inputStyle} 
+            className={inputStyle + (emailError ? ' border-red-500' : '')}
             placeholder="seuemail@exemplo.com"
             value={form.email}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
+          {emailError && <p className="text-red-500 text-xs mt-1">{emailError}</p>}
         </div>
 
         <div>
@@ -72,11 +105,13 @@ export const Login = () => {
             name="password"
             type="password" 
             required 
-            className={inputStyle}
+            className={inputStyle + (passwordError ? ' border-red-500' : '')}
             placeholder="********"
             value={form.password}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
+          {passwordError && <p className="text-red-500 text-xs mt-1">{passwordError}</p>}
         </div>
 
         {error && <p className="text-red-500 text-sm">{error}</p>}
@@ -107,7 +142,7 @@ export const Login = () => {
           </div>
         </div>
 
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="w-full" disabled={!!emailError || !!passwordError || !form.email || !form.password}>
           Entrar
         </Button>
       </form>

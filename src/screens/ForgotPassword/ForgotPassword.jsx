@@ -6,10 +6,30 @@ import { Input } from "../../components/ui/input";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
   const navigate = useNavigate();
+
+  const validateEmail = (email) => {
+    if (!email) return 'E-mail é obrigatório.';
+    const re = /^\S+@\S+\.\S+$/;
+    if (!re.test(email)) return 'E-mail inválido.';
+    return '';
+  };
+
+  const handleChange = (e) => {
+    setEmail(e.target.value);
+    setEmailError(validateEmail(e.target.value));
+  };
+
+  const handleBlur = (e) => {
+    setEmailError(validateEmail(e.target.value));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const err = validateEmail(email);
+    setEmailError(err);
+    if (err) return;
     // Lógica para enviar o e-mail de recuperação
     console.log("Solicitação de recuperação para o e-mail:", email);
     navigate("/verify-code");
@@ -34,14 +54,16 @@ const ForgotPassword = () => {
             id="email"
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleChange}
+            onBlur={handleBlur}
             required
-            className={inputStyle}
+            className={inputStyle + (emailError ? ' border-red-500' : '')}
             placeholder="Digite seu e-mail"
           />
+          {emailError && <p className="text-red-500 text-xs mt-1">{emailError}</p>}
         </div>
 
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="w-full" disabled={!!emailError || !email}>
           Enviar Código
         </Button>
         
