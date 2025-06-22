@@ -23,6 +23,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import UserDashboard from "./screens/Dashboard/User/UserDashboard";
 import UserCameras from "./screens/Dashboard/User/UserCameras";
 import UserCameraDetail from "./screens/Dashboard/User/UserCameraDetail";
+import UserRelatorios from "./screens/Dashboard/User/UserRelatorios";
 
 // Exemplo de dashboard do técnico (você pode criar depois)
 // const UserDashboard = () => <div>Dashboard do Técnico</div>;
@@ -60,6 +61,8 @@ createRoot(document.getElementById("app")).render(
           <Route path="/user/dashboard" element={<PrivateRoute role="tecnico"><UserDashboard /></PrivateRoute>} />
           <Route path="/user/cameras" element={<PrivateRoute role="tecnico"><UserCameras /></PrivateRoute>} />
           <Route path="/user/cameras/:id" element={<PrivateRoute role="tecnico"><UserCameraDetail /></PrivateRoute>} />
+          <Route path="/user/reports" element={<PrivateRoute role="tecnico"><UserRelatorios /></PrivateRoute>} />
+          <Route path="/user/settings" element={<PrivateRoute role="tecnico"><Settings /></PrivateRoute>} />
           {/* Adicione aqui outras rotas de técnico, como relatorios, settings, etc */}
         </Routes>
       </BrowserRouter>
