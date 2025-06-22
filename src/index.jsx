@@ -14,6 +14,9 @@ import CameraForm from "./screens/Dashboard/Admin/CameraForm";
 import Relatorios from "./screens/Dashboard/Admin/Relatorios";
 import Users from "./screens/Dashboard/Admin/Users";
 import UserForm from "./screens/Dashboard/Admin/UserForm";
+import GeneralRegistrations from "./screens/Dashboard/Admin/GeneralRegistrations";
+import ObraForm from "./screens/Dashboard/Admin/ObraForm";
+import SetorForm from "./screens/Dashboard/Admin/SetorForm";
 
 createRoot(document.getElementById("app")).render(
   <StrictMode>
@@ -34,6 +37,11 @@ createRoot(document.getElementById("app")).render(
         <Route path="/admin/users" element={<Users />} />
         <Route path="/admin/users/new" element={<UserForm />} />
         <Route path="/admin/users/:id/edit" element={<UserForm />} />
+        <Route path="/admin/general-registrations" element={<GeneralRegistrations />} />
+        <Route path="/admin/general-registrations/obra/new" element={<ObraForm />} />
+        <Route path="/admin/general-registrations/obra/:id/edit" element={<ObraForm />} />
+        <Route path="/admin/general-registrations/setor/new" element={<SetorForm />} />
+        <Route path="/admin/general-registrations/setor/:id/edit" element={<SetorForm />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

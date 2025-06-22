@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import InputMask from 'react-input-mask';
 import AdminLayout from '../../../components/layouts/AdminLayout';
 import { Button } from '../../../components/ui/button';
 import usersData from '../../../data/usersData';
+import { validateCPF } from '../../../lib/utils';
 
 const UserForm = () => {
   const navigate = useNavigate();
@@ -22,6 +24,25 @@ const UserForm = () => {
     senha: '',
     status: '',
   });
+
+  const [errors, setErrors] = useState({});
+
+  const validateField = (name, value) => {
+    let error = '';
+    if (name === 'email') {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (value && !emailRegex.test(value)) {
+        error = 'Formato de e-mail inválido.';
+      }
+    }
+    if (name === 'cpf') {
+      const numericCPF = value.replace(/[^\d]/g, '');
+      if (numericCPF.length === 11 && !validateCPF(numericCPF)) {
+        error = 'CPF inválido.';
+      }
+    }
+    setErrors(prev => ({ ...prev, [name]: error }));
+  };
 
   useEffect(() => {
     if (isEditMode) {
@@ -47,6 +68,7 @@ const UserForm = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    validateField(name, value);
   };
 
   const handleSubmit = (e) => {
@@ -59,6 +81,8 @@ const UserForm = () => {
     navigate('/admin/users');
   };
   
+  const hasErrors = Object.values(errors).some(error => error !== '');
+
   // Dados mockados para os selects
   const ufs = ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"];
   const obras = ["Alpha", "Beta", "Obra B", "Gama", "Delta"];
@@ -83,13 +107,26 @@ const UserForm = () => {
             {/* CPF */}
             <div>
               <label htmlFor="cpf" className="block text-sm font-medium text-gray-700 mb-1">CPF</label>
-              <input type="text" name="cpf" id="cpf" value={formData.cpf} onChange={handleChange} placeholder="000.000.000-00" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500" />
+              <InputMask
+                mask="999.999.999-99"
+                value={formData.cpf}
+                onChange={handleChange}
+              >
+                {(inputProps) => <input {...inputProps} type="text" name="cpf" id="cpf" placeholder="000.000.000-00" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500" />}
+              </InputMask>
+              {errors.cpf && <p className="text-red-500 text-xs mt-1">{errors.cpf}</p>}
             </div>
 
             {/* Data de Nascimento */}
             <div>
               <label htmlFor="dataNascimento" className="block text-sm font-medium text-gray-700 mb-1">Data de nascimento</label>
-              <input type="text" name="dataNascimento" id="dataNascimento" value={formData.dataNascimento} onChange={handleChange} placeholder="__/__/____" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500" />
+              <InputMask
+                mask="99/99/9999"
+                value={formData.dataNascimento}
+                onChange={handleChange}
+              >
+                {(inputProps) => <input {...inputProps} type="text" name="dataNascimento" id="dataNascimento" placeholder="__/__/____" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500" />}
+              </InputMask>
             </div>
 
             <div className="grid grid-cols-2 gap-x-8">
@@ -107,7 +144,13 @@ const UserForm = () => {
               {/* Telefone de Contato */}
                <div>
                 <label htmlFor="telefone" className="block text-sm font-medium text-gray-700 mb-1">Telefone de contato</label>
-                <input type="text" name="telefone" id="telefone" value={formData.telefone} onChange={handleChange} placeholder="(00) 0 0000-0000" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500" />
+                <InputMask
+                  mask="(99) 9 9999-9999"
+                  value={formData.telefone}
+                  onChange={handleChange}
+                >
+                  {(inputProps) => <input {...inputProps} type="text" name="telefone" id="telefone" placeholder="(00) 0 0000-0000" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500" />}
+                </InputMask>
               </div>
             </div>
             
@@ -141,6 +184,7 @@ const UserForm = () => {
             <div className="md:col-span-1">
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
               <input type="email" name="email" id="email" value={formData.email} onChange={handleChange} placeholder="exemplo@exemplo.com" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500" />
+              {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
             </div>
             
             {/* Senha de Primeiro Acesso */}
@@ -165,7 +209,7 @@ const UserForm = () => {
             <Button type="button" variant="outline" onClick={() => navigate('/admin/users')} className="px-8 py-2 rounded-lg border-gray-300 text-gray-700 font-semibold hover:bg-gray-100">
               Cancelar
             </Button>
-            <Button type="submit" className="px-8 py-2 rounded-lg bg-green-600 hover:bg-green-700 text-white font-semibold">
+            <Button type="submit" className="px-8 py-2 rounded-lg bg-green-600 hover:bg-green-700 text-white font-semibold disabled:bg-gray-400 disabled:cursor-not-allowed" disabled={hasErrors}>
               Salvar
             </Button>
           </div>
